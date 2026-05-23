@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nicky Hadfat - AI Agent Developer & Cybersecurity Enthusiast. Focused on intelligent systems and secure infrastructures.">
-    <title>Nicky Hadfat | AI & Cybersecurity</title>
+    <meta name="description" content="Nicky Hadfat Sugianto - AI Agent Developer & Cybersecurity Enthusiast.">
+    <title>Nicky Hadfat | AI & Cybersecurity Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -50,7 +50,7 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
@@ -67,8 +67,43 @@
             padding-top: 4rem;
         }
 
+        .avatar-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-green);
+            box-shadow: 0 0 25px var(--accent-glow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 102, 0.05);
+        }
+
+        .avatar-container::after {
+            content: "Replace with Photo";
+            font-size: 0.8rem;
+            color: var(--accent-green);
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            position: absolute;
+            z-index: 1;
+        }
+
+        /* Use this class on your actual img tag when you add your photo */
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+            position: relative;
+            /* display: none; /* remove this comment when img src is added */
+        }
+
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 900;
             color: #ffffff;
             margin-bottom: 0.5rem;
@@ -76,39 +111,33 @@
             text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
-        .hero h1::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 120px;
-            height: 5px;
-            background: var(--accent-green);
-            box-shadow: 0 0 20px var(--accent-glow);
-            border-radius: 2px;
-        }
-
         .hero h2 {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-size: clamp(1rem, 2vw, 1.3rem);
             color: var(--accent-green);
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             margin-bottom: 1.5rem;
             text-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         .hero p {
             font-size: 1.1rem;
-            max-width: 650px;
+            max-width: 700px;
             color: var(--text-muted);
             margin-bottom: 2.5rem;
             line-height: 1.8;
             font-weight: 300;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
         .btn {
             display: inline-block;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             color: var(--bg-color);
@@ -123,6 +152,13 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-green);
+            box-shadow: none;
         }
 
         .btn::before {
@@ -150,7 +186,7 @@
 
         /* Section Layouts */
         section {
-            padding: 8rem 0;
+            padding: 6rem 0;
             position: relative;
         }
         
@@ -165,8 +201,8 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -177,7 +213,7 @@
             content: '>>';
             color: var(--accent-green);
             text-shadow: 0 0 15px var(--accent-glow);
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         /* Glassmorphism Cards */
@@ -187,7 +223,7 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
-            padding: 3rem;
+            padding: 2.5rem;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
             position: relative;
@@ -195,26 +231,9 @@
         }
 
         .glass-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: rgba(0, 255, 102, 0.4);
             box-shadow: 0 15px 45px rgba(0, 255, 102, 0.1);
-        }
-
-        /* Animated shine effect */
-        .glass-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -200%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            transition: all 0.75s ease;
-        }
-
-        .glass-card:hover::after {
-            left: 200%;
         }
 
         /* About Section */
@@ -224,15 +243,10 @@
             gap: 2.5rem;
         }
 
-        @media (min-width: 850px) {
+        @media (min-width: 900px) {
             .about-grid {
                 grid-template-columns: 1.2fr 1fr;
             }
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-weight: 300;
         }
 
         .highlight {
@@ -246,7 +260,6 @@
             position: relative;
         }
         
-        /* Timeline line */
         .milestones::before {
             content: '';
             position: absolute;
@@ -258,14 +271,12 @@
         }
 
         .milestones li {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             padding-left: 2.5rem;
             position: relative;
         }
         
-        .milestones li:last-child {
-            margin-bottom: 0;
-        }
+        .milestones li:last-child { margin-bottom: 0; }
 
         .milestones li::before {
             content: '';
@@ -288,16 +299,10 @@
         }
 
         .milestones h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
             color: #fff;
             letter-spacing: 1px;
-        }
-
-        .milestones p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 300;
         }
 
         /* Projects Section */
@@ -316,54 +321,61 @@
         .project-card {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+        }
+
+        /* Project Image/Document Placeholder */
+        .project-media {
+            width: 100%;
+            height: 220px;
+            background: rgba(0, 255, 102, 0.03);
+            border: 1px dashed var(--glass-border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            color: var(--accent-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-media img, .project-media iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            /* display: none; /* Remove when media is added */
         }
 
         .project-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
             color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         
-        .project-card h3::after {
-            content: '';
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-green);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.5; }
-        }
-
         .project-meta {
             font-size: 0.85rem;
             color: var(--accent-green);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
             opacity: 0.8;
         }
 
         .project-card p {
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 300;
             flex-grow: 1;
+            font-size: 0.95rem;
         }
 
         .tech-stack {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.6rem;
             flex-wrap: wrap;
             margin-top: auto;
         }
@@ -372,26 +384,78 @@
             background: rgba(0, 255, 102, 0.05);
             border: 1px solid rgba(0, 255, 102, 0.3);
             color: var(--accent-green);
-            padding: 0.4rem 0.8rem;
+            padding: 0.3rem 0.6rem;
             border-radius: 4px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
         }
-        
-        .tech-tag:hover {
-            background: rgba(0, 255, 102, 0.2);
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+
+        /* Certifications Section */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .cert-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .cert-category h3 {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cert-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .cert-title {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: var(--accent-green);
+            margin-bottom: 0.2rem;
+        }
+
+        .cert-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
         }
 
         footer {
             text-align: center;
-            padding: 4rem 0 2rem;
+            padding: 3rem 0 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
         }
@@ -404,10 +468,8 @@
         .glitch-text::before, .glitch-text::after {
             content: attr(data-text);
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             opacity: 0.8;
         }
         
@@ -450,34 +512,43 @@
     <div class="container">
         <!-- Hero Section -->
         <section class="hero">
+            <!-- Profile Photo Placeholder -->
+            <div class="avatar-container">
+                <!-- Add your image source here to replace the placeholder text -->
+                <!-- <img src="path/to/your/photo.jpg" alt="Nicky Hadfat" class="avatar-img"> -->
+            </div>
+
             <h1 class="glitch-text" data-text="Nicky Hadfat">Nicky Hadfat</h1>
-            <h2>AI Agent Developer & Cyber Sec Enthusiast</h2>
+            <h2>AI Agent Developer | Cyber Sec Enthusiast | JustNickyH</h2>
             <p>Architecting intelligent autonomous systems and secure infrastructures. Focused on driving measurable ROI, resolving complex operational bottlenecks, and mitigating organizational risks through zero-trust architectures and cutting-edge AI.</p>
-            <a href="#projects" class="btn">Initialize Systems</a>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View Systems</a>
+                <a href="https://www.linkedin.com/in/nicky-hadfat-sugianto" target="_blank" class="btn btn-outline">LinkedIn Module</a>
+            </div>
         </section>
 
         <!-- About Section -->
         <section id="about">
-            <h2 class="section-title">System_Architecture()</h2>
+            <h2 class="section-title">System.Info()</h2>
             <div class="about-grid">
-                <div class="glass-card about-text">
-                    <p>My technical journey is rooted in a robust foundation of <span class="highlight">Computer and Network Engineering (TKJ)</span>. This deep comprehension of hardware and low-level infrastructure allows me to bridge the critical gap between proactive cybersecurity measures and advanced, autonomous AI solutions.</p>
-                    <p>I engineer solutions that aren't just technically sound, but strategically aligned with core business objectives—optimizing operations and safeguarding digital assets in zero-trust environments to deliver immediate value.</p>
-                    <p>My ultimate mission is to seamlessly integrate intelligent AI agents into highly secure environments, creating scalable tools that solve real-world problems with unprecedented efficiency and reliability.</p>
+                <div class="glass-card">
+                    <p style="margin-bottom: 1.5rem; font-weight: 300;">My technical journey is rooted in a robust foundation of <span class="highlight">Computer and Network Engineering (TKJ)</span> at SMKN 1 Kabupaten Tangerang, where I currently hold the 3rd rank. This deep comprehension of hardware and infrastructure allows me to bridge the critical gap between proactive cybersecurity measures and advanced AI solutions.</p>
+                    <p style="margin-bottom: 1.5rem; font-weight: 300;">With plans to pursue higher education at <span class="highlight">UNPAM in 2026</span>, I engineer solutions that aren't just technically sound, but strategically aligned with core business objectives—optimizing operations and safeguarding digital assets to deliver immediate ROI.</p>
+                    <p style="font-weight: 300;">My ultimate mission as an innovator is to seamlessly integrate intelligent AI agents into highly secure environments, creating scalable tools that solve real-world industry problems with unprecedented efficiency.</p>
                 </div>
                 <div class="glass-card">
                     <ul class="milestones">
                         <li>
                             <h4>IDCamp 2025 Cyber Security Scholar</h4>
-                            <p>Actively advancing capabilities in advanced threat detection, system hardening, and secure architecture design methodologies.</p>
-                        </li>
-                        <li>
-                            <h4>MEXT Senshu Scholarship Aspirant</h4>
-                            <p>Rigorous preparation for advanced studies in Japan to integrate global technological perspectives into scalable, enterprise-grade solutions.</p>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">Secured a prestigious opportunity to actively advance capabilities in advanced threat detection, system hardening, and secure architectures.</p>
                         </li>
                         <li>
                             <h4>IT Support Intern @ PT Arthawena Sakti Gemilang</h4>
-                            <p>Streamlined technical operations, ensured high-availability systems, and significantly reduced downtime to support continuous business operations.</p>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">Streamlined technical operations and ensured high-availability systems for a major manufacturing firm, successfully bridging formal academics with industry practice.</p>
+                        </li>
+                        <li>
+                            <h4>Vocational Excellence</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">Top-performing student (3rd Rank) at A-accredited SMKN 1 Kab. Tangerang, majoring in TKJ.</p>
                         </li>
                     </ul>
                 </div>
@@ -490,11 +561,13 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="glass-card project-card">
-                    <div>
-                        <h3>HANA AI</h3>
-                        <div class="project-meta">// Emotional-Adaptive AI Agent</div>
-                        <p>Engineered an autonomous AI agent capable of contextual emotion adaptation and sophisticated long-term memory retrieval. Designed to revolutionize human-computer interaction, this system increases user engagement and automates complex client-facing operations for forward-thinking enterprises.</p>
+                    <div class="project-media">
+                        [Insert Project Image/Doc]
+                        <!-- <img src="path/to/hana-image.jpg" alt="HANA AI"> -->
                     </div>
+                    <h3>HANA AI</h3>
+                    <div class="project-meta">// Emotional-Adaptive AI Agent</div>
+                    <p>An emotionally intelligent autonomous AI system capable of contextual emotion adaptation and sophisticated long-term memory retrieval. Designed to revolutionize human-computer interaction, this system increases user engagement and automates complex operations for forward-thinking enterprises.</p>
                     <div class="tech-stack">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Vector Memory Logic</span>
@@ -504,13 +577,15 @@
 
                 <!-- Project 2 -->
                 <div class="glass-card project-card">
-                    <div>
-                        <h3>Pallatio OS</h3>
-                        <div class="project-meta">// Linux Kiosk Lockdown Environment</div>
-                        <p>Developed a tamper-proof kiosk operating system tailored for highly exposed public terminals. Enforces strict zero-trust security compliance and eliminates unauthorized access vectors. This solution drastically reduces maintenance overhead and secures physical touchpoints against external threats.</p>
+                    <div class="project-media">
+                        [Insert Project Image/Doc]
+                        <!-- <img src="path/to/pallatio-image.jpg" alt="Pallatio OS"> -->
                     </div>
+                    <h3>Pallatio OS</h3>
+                    <div class="project-meta">// Linux Kiosk Lockdown Environment</div>
+                    <p>A tamper-proof kiosk operating system tailored for highly exposed public terminals. Enforces strict zero-trust security compliance and eliminates unauthorized access vectors. This solution drastically reduces maintenance overhead and secures physical touchpoints against external threats.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Linux / Debian</span>
+                        <span class="tech-tag">Linux</span>
                         <span class="tech-tag">Bash Scripting</span>
                         <span class="tech-tag">Security Hardening</span>
                     </div>
@@ -518,13 +593,118 @@
             </div>
         </section>
 
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2 class="section-title">Credential_Matrix</h2>
+            <div class="glass-card">
+                <div class="cert-grid">
+                    <!-- AI & ML -->
+                    <div class="cert-category">
+                        <h3>AI & Machine Learning</h3>
+                        <ul class="cert-list">
+                            <li>
+                                <div class="cert-title">Belajar Machine Learning untuk Pemula</div>
+                                <div class="cert-issuer">Dicoding | 90-hour program</div>
+                                <div class="cert-desc">End-to-end ML workflow, supervised/unsupervised learning, feature engineering, and hyperparameter tuning.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Study Case Bootcamp ML & AI for Beginner</div>
+                                <div class="cert-issuer">DQLab</div>
+                                <div class="cert-desc">Practical bootcamp focused on foundational AI and ML applications.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Belajar Dasar AI</div>
+                                <div class="cert-issuer">Dicoding | 10-hour program</div>
+                                <div class="cert-desc">Core AI concepts, data utilization, and basics of deep learning.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">AI Fluency Training & AI for SMEs</div>
+                                <div class="cert-issuer">IOE & Microsoft</div>
+                                <div class="cert-desc">Foundational AI concepts, ethics, and SME adoption strategies.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Software & Cloud -->
+                    <div class="cert-category">
+                        <h3>Software Eng & Cloud</h3>
+                        <ul class="cert-list">
+                            <li>
+                                <div class="cert-title">Memulai Pemrograman dengan Python</div>
+                                <div class="cert-issuer">Dicoding | 60-hour program</div>
+                                <div class="cert-desc">Python fundamentals, data interaction, OOP, and unit testing.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Prompt Engineering untuk Software Developer</div>
+                                <div class="cert-issuer">Dicoding | 16-hour program</div>
+                                <div class="cert-desc">Mastering generative AI language models to optimize software development.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Belajar Dasar Cloud dan Gen AI di AWS</div>
+                                <div class="cert-issuer">Dicoding | 13-hour program</div>
+                                <div class="cert-desc">AWS global infrastructure, networking, security, and Gen AI concepts.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Spec-Driven Development dengan Kiro</div>
+                                <div class="cert-issuer">Dicoding | 10-hour program</div>
+                                <div class="cert-desc">Requirement design and practical AI-assisted application workflow.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Networking & Security -->
+                    <div class="cert-category">
+                        <h3>Networking & Cybersecurity</h3>
+                        <ul class="cert-list">
+                            <li>
+                                <div class="cert-title">Networking Basics</div>
+                                <div class="cert-issuer">Cisco Networking Academy / IDCamp</div>
+                                <div class="cert-desc">Foundational networking credential.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Introduction to Cybersecurity</div>
+                                <div class="cert-issuer">Cisco / IDCamp</div>
+                                <div class="cert-desc">Fundamentals of online safety and organizational protection against cyber threats.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Getting Started with Cisco Packet Tracer</div>
+                                <div class="cert-issuer">Cisco</div>
+                                <div class="cert-desc">Practical network simulation tool knowledge.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Data & Personal Dev -->
+                    <div class="cert-category">
+                        <h3>Data Analytics & Personal Dev</h3>
+                        <ul class="cert-list">
+                            <li>
+                                <div class="cert-title">Study Case Bootcamp Data Analyst (SQL, Python, Excel)</div>
+                                <div class="cert-issuer">DQLab</div>
+                                <div class="cert-desc">Hands-on bootcamp for database management and data manipulation.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Belajar Strategi Pengembangan Diri</div>
+                                <div class="cert-issuer">Dicoding</div>
+                                <div class="cert-desc">Cultivating a growth mindset, adaptability, and actionable plans.</div>
+                            </li>
+                            <li>
+                                <div class="cert-title">Introduction to Financial Literacy</div>
+                                <div class="cert-issuer">Dicoding</div>
+                                <div class="cert-desc">Everyday financial management and investment strategies.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer>
-            <p>&copy; <span id="year"></span> Nicky Hadfat. All systems operational. Security active.</p>
+            <p>&copy; <span id="year"></span> Nicky Hadfat Sugianto. All systems operational. Security active.</p>
         </footer>
     </div>
 
     <script>
-        // Set dynamic year
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // Antigravity Particle System Canvas
@@ -536,7 +716,7 @@
 
         const config = {
             particleCount: window.innerWidth < 768 ? 60 : 120,
-            baseColor: '0, 255, 102', // Glowing accent green
+            baseColor: '0, 255, 102',
             maxSpeed: 1.2,
             minSpeed: 0.1,
             maxSize: 2.5,
@@ -545,25 +725,10 @@
 
         let mouse = { x: null, y: null, radius: 150 };
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
-
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-        
-        window.addEventListener('touchstart', (e) => {
-            mouse.x = e.touches[0].clientX;
-            mouse.y = e.touches[0].clientY;
-        });
-        
-        window.addEventListener('touchend', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
+        window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+        window.addEventListener('touchstart', (e) => { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; });
+        window.addEventListener('touchend', () => { mouse.x = null; mouse.y = null; });
 
         function initCanvas() {
             width = canvas.width = window.innerWidth;
@@ -572,7 +737,6 @@
 
         window.addEventListener('resize', () => {
             initCanvas();
-            // Adjust particle count on resize
             config.particleCount = window.innerWidth < 768 ? 60 : 120;
             createParticles();
         });
@@ -582,12 +746,9 @@
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
                 this.size = Math.random() * (config.maxSize - config.minSize) + config.minSize;
-                // Antigravity: primary movement is floating upwards
                 this.vy = -(Math.random() * config.maxSpeed + config.minSpeed);
-                // Slight horizontal drift
                 this.vx = (Math.random() - 0.5) * 0.4;
                 this.opacity = Math.random() * 0.7 + 0.1;
-                // Wobble effect properties
                 this.wobble = Math.random() * Math.PI * 2;
                 this.wobbleSpeed = Math.random() * 0.05 + 0.01;
             }
@@ -602,12 +763,10 @@
             }
 
             update() {
-                // Apply wobble to horizontal movement for organic floating
                 this.wobble += this.wobbleSpeed;
                 this.x += this.vx + (Math.sin(this.wobble) * 0.5);
                 this.y += this.vy;
 
-                // Mouse interaction - repel smoothly
                 if (mouse.x != null && mouse.y != null) {
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
@@ -616,24 +775,17 @@
                     if (distance < mouse.radius) {
                         const forceDirectionX = dx / distance;
                         const forceDirectionY = dy / distance;
-                        // Calculate force so it's stronger closer to the mouse
                         const force = (mouse.radius - distance) / mouse.radius;
-                        // Adjust force multiplier for smoothness
-                        const directionX = forceDirectionX * force * 1.5;
-                        const directionY = forceDirectionY * force * 1.5;
-                        
-                        this.x -= directionX;
-                        this.y -= directionY;
+                        this.x -= forceDirectionX * force * 1.5;
+                        this.y -= forceDirectionY * force * 1.5;
                     }
                 }
 
-                // Reset particle to bottom when it floats out of view
                 if (this.y + this.size < 0) {
                     this.y = height + this.size;
                     this.x = Math.random() * width;
                 }
                 
-                // Screen wrap horizontally
                 if (this.x > width + this.size) this.x = -this.size;
                 if (this.x < -this.size) this.x = width + this.size;
 
@@ -651,13 +803,11 @@
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, width, height);
-            
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
             }
         }
 
-        // Initialize and start
         initCanvas();
         createParticles();
         animate();
