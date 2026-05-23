@@ -504,6 +504,51 @@
             80% { clip: rect(3px, 9999px, 80px, 0); }
             100% { clip: rect(44px, 9999px, 66px, 0); }
         }
+        /* =========================================
+           MOBILE RESPONSIVENESS FIX
+           ========================================= */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem; /* Kurangin jarak kiri-kanan layar utama */
+            }
+            
+            .glass-card {
+                padding: 1.5rem; /* Kurangin padding di dalam kartu biar teks lega */
+            }
+
+            .hero {
+                align-items: center; /* Bikin semua konten di atas jadi rata tengah */
+                text-align: center;
+                padding-top: 6rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem; /* Kecilin ukuran teks nama di HP */
+            }
+
+            .hero h2 {
+                font-size: 0.9rem;
+            }
+
+            .hero-buttons {
+                justify-content: center; /* Tombol jadi ke tengah */
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%; /* Tombol memanjang penuh di HP biar gampang dipencet */
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem; /* Kecilin judul section */
+                justify-content: center;
+            }
+            
+            .avatar-container {
+                margin: 0 auto 2rem auto; /* Avatar dipaksa ke tengah */
+            }
     </style>
 </head>
 <body>
@@ -561,10 +606,7 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="glass-card project-card">
-                    <div class="project-media">
-                        [Insert Project Image/Doc]
-                        <!-- <img src="path/to/hana-image.jpg" alt="HANA AI"> -->
-                    </div>
+                  <a href="https://github.com/JustNickyH/HANA-AI" class="btn btn-outline" style="margin-bottom: 1rem; text-align: center; display: block;">View Source Code</a>
                     <h3>HANA AI</h3>
                     <div class="project-meta">// Emotional-Adaptive AI Agent</div>
                     <p>An emotionally intelligent autonomous AI system capable of contextual emotion adaptation and sophisticated long-term memory retrieval. Designed to revolutionize human-computer interaction, this system increases user engagement and automates complex operations for forward-thinking enterprises.</p>
@@ -577,10 +619,7 @@
 
                 <!-- Project 2 -->
                 <div class="glass-card project-card">
-                    <div class="project-media">
-                        [Insert Project Image/Doc]
-                        <!-- <img src="path/to/pallatio-image.jpg" alt="Pallatio OS"> -->
-                    </div>
+                   <a href="https://github.com/JustNickyH/Pallatio-OS" class="btn btn-outline" style="margin-bottom: 1rem; text-align: center; display: block;">View Source Code</a>
                     <h3>Pallatio OS</h3>
                     <div class="project-meta">// Linux Kiosk Lockdown Environment</div>
                     <p>A tamper-proof kiosk operating system tailored for highly exposed public terminals. Enforces strict zero-trust security compliance and eliminates unauthorized access vectors. This solution drastically reduces maintenance overhead and secures physical touchpoints against external threats.</p>
