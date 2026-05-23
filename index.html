@@ -3,76 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicky Hadfat | AI & Security Portfolio</title>
+    <title>Nicky Hadfat | Tech Portfolio</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
-            line-height: 1.6;
+        body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050914; 
+            color: #d1d5db;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
         }
-        header {
-            background-color: #161b22;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 1px solid #30363d;
+
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
-        h1 {
-            color: #58a6ff;
-            margin: 0 0 10px 0;
-        }
+
         .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
-        .project-card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 20px;
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
         }
-        .project-title {
-            color: #2ea043;
+
+        h1 {
+            color: #10b981; 
+            font-size: 3.5em;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-family: monospace;
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+
+        .profile-section {
+            background: rgba(17, 24, 39, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .highlight-text {
+            color: #34d399;
+            font-weight: bold;
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(16, 185, 129, 0.7);
+        }
+
+        h2 {
+            color: #f3f4f6;
             margin-top: 0;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        h2::before {
+            content: '>';
+            color: #10b981;
+            font-family: monospace;
+        }
+
         .tech-stack {
-            font-size: 0.9em;
-            color: #8b949e;
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: #34d399;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-family: monospace;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        p {
+            line-height: 1.7;
             margin-bottom: 15px;
         }
+
         strong {
-            color: #e6edf3;
+            color: #f9fafb;
+        }
+
+        .btn-repo {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: transparent;
+            color: #10b981;
+            text-decoration: none;
+            font-family: monospace;
+            border: 1px solid #10b981;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-repo:hover {
+            background: #10b981;
+            color: #050914;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Nicky Hadfat</h1>
-    <p>AI Agent Developer & Security Enthusiast</p>
-</header>
+    <canvas id="particle-canvas"></canvas>
 
-<div class="container">
-    <p>I build intelligent AI agents and robust security frameworks for enterprise environments. Below is my documented proof of work.</p>
+    <div class="container">
+        <header>
+            <h1>Nicky Hadfat</h1>
+            <div class="subtitle">AI Agent Developer & Security Architect</div>
+        </header>
 
-    <div class="project-card">
-        <h2 class="project-title">Project 1: HANA AI (Emotional-Adaptive AI Agent)</h2>
-        <div class="tech-stack"><strong>Tools:</strong> Python, LLM Prompting, Data Structures (Memory Logic)</div>
-        
-        <p><strong>Background:</strong> Interaksi bot perusahaan ke pelanggan sering kali kaku, statis, dan gagal mempertahankan retensi karena kurangnya kecerdasan emosional dan memori kontekstual.</p>
-        
-        <p><strong>Objective:</strong> Merancang dan men-deploy agen AI yang mampu merespons secara adaptif-emosional untuk otomatisasi alur kerja (workflows) dalam skenario enterprise.</p>
-        
-        <p><strong>Insights:</strong> Tantangan terbesar adalah merancang arsitektur memori agar AI tidak berhalusinasi, tetap dalam persona-nya, dan mengingat riwayat percakapan pengguna tanpa membebani latensi respons.</p>
-        
-        <p><strong>Impact:</strong> Menghasilkan agen AI yang siap diintegrasikan, memangkas waktu respons manual, dan meningkatkan keterlibatan interaksi (engagement rate) secara signifikan.</p>
+        <div class="profile-section">
+            <p>I build robust security frameworks and intelligent AI agents for enterprise environments. My foundation is built on a rigorous Vocational High School (TKJ) education, reinforced by hands-on experience as an IT Support Intern at <strong>PT Arthawena Sakti Gemilang</strong>. As an <strong>IDCamp 2025 Cyber Security Scholar</strong>, I specialize in identifying system behaviors under attack and bridging the gap between technical complexity and business resilience.</p>
+            <p>Currently expanding my global perspective and technical discipline in preparation for the <span class="highlight-text">MEXT Senshu Scholarship in Japan</span>.</p>
+        </div>
+
+        <div class="glass-card">
+            <h2>HANA AI (Emotional-Adaptive Agent)</h2>
+            <div class="tech-stack">Python | LLM Prompting | Vector Mem-Logic</div>
+            
+            <p><strong>Background:</strong> Corporate bots often fail at customer retention due to rigid, static interactions and a lack of contextual memory.</p>
+            <p><strong>Objective:</strong> Architect an AI agent capable of emotionally adaptive responses to automate enterprise workflows and lead capture scenarios.</p>
+            <p><strong>Insights:</strong> Developed specialized memory structures to ensure the AI maintains its persona and avoids hallucination without increasing response latency.</p>
+            <p><strong>Impact:</strong> Significantly reduced manual response times and increased engagement rates through automated, highly personalized interactions.</p>
+            
+            <a href="#" class="btn-repo">View Source Repository</a>
+        </div>
+
+        <div class="glass-card">
+            <h2>Pallatio OS (Linux Kiosk Lockdown)</h2>
+            <div class="tech-stack">Ubuntu LTS | OS Hardening | Bash Scripting</div>
+            
+            <p><strong>Background:</strong> Public-facing terminals in enterprise and manufacturing environments are highly vulnerable to unauthorized OS modifications.</p>
+            <p><strong>Objective:</strong> Secure public terminals by restricting the Linux Operating System to a single, locked-down application environment.</p>
+            <p><strong>Insights:</strong> Leveraged the getty autologin flag and custom .xinitrc configurations to bypass standard login while blocking all backend access.</p>
+            <p><strong>Impact:</strong> Deployed a tamper-proof system that prevents unauthorized interactions, drastically reducing technical debt and physical security risks.</p>
+            
+            <a href="#" class="btn-repo">View Source Repository</a>
+        </div>
     </div>
 
-</div>
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const particlesArray = [];
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedY = (Math.random() * -0.5) - 0.1; 
+                this.speedX = (Math.random() * 0.4) - 0.2; 
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < 0) {
+                    this.y = canvas.height;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(16, 185, 129, 0.4)'; 
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function init() {
+            for (let i = 0; i < 120; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        init();
+        animate();
 
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
