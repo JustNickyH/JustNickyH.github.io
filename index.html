@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nicky — Microsoft Learn Student Ambassador</title>
-  <meta name="description" content="Portal edukasi dan kumpulan modul pembelajaran resmi Microsoft Learn yang dibagikan oleh Nicky, Microsoft Learn Student Ambassador dari Universitas Pamulang." />
+  <title>Nicky Hadfat Sugianto — Microsoft Learn Student Ambassador</title>
+  <meta name="description" content="Portal edukasi dan kumpulan modul pembelajaran resmi Microsoft Learn oleh Nicky Hadfat Sugianto, Microsoft Learn Student Ambassador dari Universitas Pamulang." />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
-    /* ============================================
+    /* =============================================
        RESET & BASE
-       ============================================ */
+       ============================================= */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
@@ -41,26 +47,26 @@
       color: inherit;
     }
 
-    /* ============================================
+    /* =============================================
        UTILITY
-       ============================================ */
+       ============================================= */
     .container {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 28px;
     }
 
-    /* ============================================
+    /* =============================================
        NAVBAR
-       ============================================ */
+       ============================================= */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       padding: 14px 0;
     }
@@ -78,6 +84,11 @@
       font-weight: 700;
       font-size: 1.05rem;
       color: #0078D4;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      opacity: 0.8;
     }
 
     .navbar-brand svg {
@@ -86,15 +97,15 @@
 
     .navbar-links {
       display: flex;
-      gap: 28px;
+      gap: 32px;
       list-style: none;
     }
 
     .navbar-links a {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
-      color: #444;
-      transition: color 0.2s;
+      color: #555;
+      transition: all 0.3s ease;
       position: relative;
     }
 
@@ -107,7 +118,7 @@
       height: 2px;
       background: #0078D4;
       border-radius: 2px;
-      transition: width 0.25s ease;
+      transition: width 0.3s ease;
     }
 
     .navbar-links a:hover {
@@ -118,127 +129,256 @@
       width: 100%;
     }
 
-    /* ============================================
+    /* =============================================
        HERO / HEADER PROFILE
-       ============================================ */
+       ============================================= */
     .hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #e8f4fd 0%, #f0f6ff 40%, #ffffff 100%);
-      padding: 80px 0 90px;
+      background: linear-gradient(160deg, #e6f1fc 0%, #f0f6ff 35%, #ffffff 100%);
+      padding: 72px 0 64px;
     }
 
     .hero::before {
       content: '';
       position: absolute;
-      top: -120px;
-      right: -120px;
-      width: 400px;
-      height: 400px;
+      top: -100px;
+      right: -80px;
+      width: 420px;
+      height: 420px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,120,212,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,120,212,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .hero::after {
       content: '';
       position: absolute;
-      bottom: -80px;
-      left: -60px;
+      bottom: -60px;
+      left: -40px;
       width: 300px;
       height: 300px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,120,212,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,120,212,0.05) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .hero-inner {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      text-align: center;
+      gap: 48px;
       position: relative;
       z-index: 1;
     }
 
+    .hero-avatar-wrap {
+      flex-shrink: 0;
+    }
+
     .hero-avatar {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #ffffff;
-      box-shadow: 0 8px 30px rgba(0, 120, 212, 0.18);
-      margin-bottom: 24px;
+      box-shadow: 0 10px 36px rgba(0, 120, 212, 0.18);
       animation: fadeScaleIn 0.6s ease forwards;
     }
 
     @keyframes fadeScaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.85) translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
+      from { opacity: 0; transform: scale(0.85) translateY(14px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .hero-content {
+      flex: 1;
+      animation: fadeUp 0.55s 0.1s ease both;
     }
 
     .hero-name {
-      font-size: 2.4rem;
-      font-weight: 800;
+      font-size: 2.2rem;
+      font-weight: 900;
       color: #111;
       letter-spacing: -0.5px;
-      margin-bottom: 8px;
-      animation: fadeUp 0.5s 0.15s ease both;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .hero-handle {
+      font-size: 0.92rem;
+      color: #0078D4;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: linear-gradient(135deg, #0078D4, #005a9e);
-      color: #ffffff;
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      padding: 6px 16px;
+      padding: 5px 14px;
       border-radius: 20px;
-      margin-bottom: 16px;
       letter-spacing: 0.2px;
-      animation: fadeUp 0.5s 0.25s ease both;
     }
 
-    .hero-subtitle {
-      font-size: 1rem;
-      color: #555;
-      font-weight: 500;
-      margin-bottom: 20px;
-      animation: fadeUp 0.5s 0.35s ease both;
+    .hero-badge--primary {
+      background: linear-gradient(135deg, #0078D4, #005a9e);
+      color: #ffffff;
+    }
+
+    .hero-badge--secondary {
+      background: #edf2f7;
+      color: #444;
     }
 
     .hero-desc {
-      max-width: 640px;
-      font-size: 0.95rem;
-      color: #666;
+      font-size: 0.9rem;
+      color: #555;
       line-height: 1.8;
-      animation: fadeUp 0.5s 0.45s ease both;
+      max-width: 600px;
+      margin-bottom: 18px;
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      color: #555;
+      background: #ffffff;
+      border: 1.5px solid #e0e4ea;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 6px 20px rgba(0, 120, 212, 0.2);
+    }
+
+    .social-link--linkedin:hover {
+      background: #0A66C2;
+      color: #fff;
+      border-color: #0A66C2;
+    }
+
+    .social-link--instagram:hover {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .social-link--whatsapp:hover {
+      background: #25D366;
+      color: #fff;
+      border-color: #25D366;
     }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ============================================
+    /* =============================================
+       TECH STACK STRIP
+       ============================================= */
+    .tech-strip {
+      background: #f7f9fc;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      padding: 28px 0;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 120, 212, 0.1);
+      border-color: rgba(0, 120, 212, 0.15);
+    }
+
+    .tech-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .tech-item-icon--python {
+      background: linear-gradient(135deg, #e0f0ff, #cce4ff);
+      color: #306998;
+    }
+
+    .tech-item-icon--linux {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #d97706;
+    }
+
+    .tech-item-icon--ai {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      color: #7c3aed;
+    }
+
+    .tech-item-icon--cloud {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #0078D4;
+    }
+
+    .tech-item-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #333;
+      line-height: 1.3;
+    }
+
+    .tech-item-sub {
+      font-size: 0.7rem;
+      color: #888;
+      font-weight: 400;
+    }
+
+    /* =============================================
        SECTION COMMON
-       ============================================ */
+       ============================================= */
     .section {
-      padding: 80px 0;
+      padding: 72px 0;
     }
 
     .section--alt {
@@ -247,51 +387,53 @@
 
     .section-header {
       text-align: center;
-      margin-bottom: 52px;
+      margin-bottom: 48px;
     }
 
     .section-label {
-      display: inline-block;
-      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.6px;
       color: #0078D4;
       margin-bottom: 10px;
     }
 
     .section-title {
-      font-size: 2rem;
+      font-size: 1.9rem;
       font-weight: 800;
       color: #111;
       letter-spacing: -0.3px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .section-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: #777;
-      max-width: 560px;
+      max-width: 580px;
       margin: 0 auto;
     }
 
-    /* ============================================
+    /* =============================================
        CARDS GRID
-       ============================================ */
+       ============================================= */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 24px;
     }
 
     .card {
       background: #ffffff;
       border-radius: 16px;
       border: 1px solid rgba(0, 0, 0, 0.06);
-      padding: 36px 30px 30px;
+      padding: 32px 28px 28px;
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
     }
@@ -310,8 +452,8 @@
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0, 120, 212, 0.1), 0 8px 20px rgba(0, 0, 0, 0.04);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 56px rgba(0, 120, 212, 0.12), 0 8px 24px rgba(0, 0, 0, 0.05);
     }
 
     .card:hover::before {
@@ -319,47 +461,60 @@
     }
 
     .card-icon {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       flex-shrink: 0;
+      font-size: 1.25rem;
     }
 
     .card-icon--azure {
-      background: linear-gradient(135deg, #e1f0ff, #cce4ff);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #0078D4;
     }
 
     .card-icon--ai {
-      background: linear-gradient(135deg, #f3e8ff, #e4d4f7);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      color: #7c3aed;
     }
 
     .card-icon--cert {
-      background: linear-gradient(135deg, #e0f7ed, #c4eeda);
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      color: #059669;
     }
 
-    .card-icon svg {
-      width: 26px;
-      height: 26px;
+    .card-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0078D4;
+      background: #edf4fc;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      align-self: flex-start;
     }
 
     .card-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #111;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       line-height: 1.4;
     }
 
     .card-desc {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: #666;
       line-height: 1.7;
       flex-grow: 1;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .card-btn {
@@ -368,29 +523,28 @@
       gap: 8px;
       background: #0078D4;
       color: #ffffff;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      padding: 12px 24px;
+      padding: 11px 22px;
       border-radius: 10px;
       border: none;
       cursor: pointer;
-      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+      transition: all 0.3s ease;
       align-self: flex-start;
     }
 
-    .card-btn svg {
-      width: 16px;
-      height: 16px;
-      transition: transform 0.25s ease;
+    .card-btn i {
+      font-size: 0.78rem;
+      transition: transform 0.3s ease;
     }
 
     .card-btn:hover {
       background: #005a9e;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 120, 212, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 120, 212, 0.3);
     }
 
-    .card-btn:hover svg {
+    .card-btn:hover i {
       transform: translateX(3px);
     }
 
@@ -398,80 +552,85 @@
       transform: translateY(0);
     }
 
-    /* ============================================
+    /* =============================================
        BENEFITS SECTION
-       ============================================ */
+       ============================================= */
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 24px;
     }
 
     .benefit-item {
       text-align: center;
-      padding: 40px 24px;
+      padding: 36px 24px;
       border-radius: 16px;
       background: #ffffff;
       border: 1px solid rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .benefit-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
     }
 
     .benefit-icon {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 18px;
+      font-size: 1.3rem;
     }
 
     .benefit-icon--free {
-      background: linear-gradient(135deg, #e0f7ed, #c4eeda);
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      color: #059669;
     }
 
     .benefit-icon--badge {
-      background: linear-gradient(135deg, #fff4d6, #ffe9a8);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #d97706;
     }
 
     .benefit-icon--expert {
-      background: linear-gradient(135deg, #e1f0ff, #cce4ff);
-    }
-
-    .benefit-icon svg {
-      width: 28px;
-      height: 28px;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #0078D4;
     }
 
     .benefit-title {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: #111;
       margin-bottom: 8px;
     }
 
     .benefit-desc {
-      font-size: 0.87rem;
+      font-size: 0.84rem;
       color: #666;
       line-height: 1.7;
     }
 
-    /* ============================================
+    /* =============================================
        CTA BANNER
-       ============================================ */
+       ============================================= */
     .cta-banner {
       background: linear-gradient(135deg, #0078D4 0%, #005a9e 100%);
       border-radius: 20px;
-      padding: 56px 40px;
+      padding: 52px 40px;
       text-align: center;
       color: #ffffff;
       position: relative;
       overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .cta-banner:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(0, 120, 212, 0.25);
     }
 
     .cta-banner::before {
@@ -497,30 +656,30 @@
     }
 
     .cta-banner h2 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 800;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       position: relative;
       z-index: 1;
     }
 
     .cta-banner p {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       opacity: 0.9;
-      max-width: 480px;
+      max-width: 520px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
       line-height: 1.7;
     }
 
-    /* ============================================
+    /* =============================================
        FOOTER
-       ============================================ */
+       ============================================= */
     .footer {
       background: #fafbfc;
       border-top: 1px solid rgba(0, 0, 0, 0.05);
-      padding: 28px 0;
+      padding: 26px 0;
       text-align: center;
     }
 
@@ -535,9 +694,33 @@
       font-weight: 600;
     }
 
-    /* ============================================
+    /* =============================================
+       SCROLL REVEAL
+       ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal:nth-child(2) { transition-delay: 0.08s; }
+    .reveal:nth-child(3) { transition-delay: 0.16s; }
+    .reveal:nth-child(4) { transition-delay: 0.24s; }
+
+    /* =============================================
        RESPONSIVE
-       ============================================ */
+       ============================================= */
+    @media (max-width: 1024px) {
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 900px) {
       .cards-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -547,68 +730,85 @@
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
+      .hero-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-desc {
+        text-align: center;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+
+      .hero-badges {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 52px 0 48px;
+      }
+
+      .hero-name {
+        font-size: 1.7rem;
+      }
+
+      .hero-avatar {
+        width: 110px;
+        height: 110px;
+      }
+
       .navbar-links {
         display: none;
       }
 
-      .hero {
-        padding: 56px 0 64px;
-      }
-
-      .hero-name {
-        font-size: 1.8rem;
-      }
-
-      .hero-avatar {
-        width: 96px;
-        height: 96px;
-      }
-
       .section {
-        padding: 56px 0;
+        padding: 52px 0;
       }
 
       .section-title {
-        font-size: 1.5rem;
+        font-size: 1.45rem;
       }
 
       .cards-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
       }
 
       .benefits-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 16px;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
       }
 
       .cta-banner {
-        padding: 40px 24px;
+        padding: 36px 20px;
         border-radius: 16px;
       }
 
       .cta-banner h2 {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
       }
     }
 
-    /* ============================================
-       SCROLL REVEAL ANIMATION
-       ============================================ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    @media (max-width: 420px) {
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
     }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal:nth-child(2) { transition-delay: 0.1s; }
-    .reveal:nth-child(3) { transition-delay: 0.2s; }
   </style>
 </head>
 <body>
@@ -617,7 +817,6 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="navbar-brand">
-        <!-- Microsoft Logo Icon -->
         <svg width="20" height="20" viewBox="0 0 21 21" fill="none">
           <rect width="10" height="10" fill="#f25022"/>
           <rect x="11" width="10" height="10" fill="#7fba00"/>
@@ -627,6 +826,7 @@
         Microsoft Learn Hub
       </a>
       <ul class="navbar-links">
+        <li><a href="#techstack">Tech Stack</a></li>
         <li><a href="#materi">Materi</a></li>
         <li><a href="#keuntungan">Keuntungan</a></li>
       </ul>
@@ -636,99 +836,134 @@
   <!-- ========== HERO ========== -->
   <header class="hero" id="hero">
     <div class="container hero-inner">
-      <img
-        src="avatar.jpg"
-        alt="Foto Profil Nicky"
-        class="hero-avatar"
-      />
-      <h1 class="hero-name">Nicky</h1>
-      <div class="hero-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        Microsoft Learn Student Ambassador
+      <div class="hero-avatar-wrap">
+        <img
+          src="avatar.jpg"
+          alt="Foto Profil Nicky Hadfat Sugianto"
+          class="hero-avatar"
+        />
       </div>
-      <p class="hero-subtitle">Information Systems Student — Universitas Pamulang</p>
-      <p class="hero-desc">
-        Selamat datang! Di sini saya membagikan modul pembelajaran resmi dan gratis dari Microsoft
-        untuk membantu teman-teman mahasiswa meng-upgrade skill IT dan mempersiapkan sertifikasi global.
-      </p>
+      <div class="hero-content">
+        <h1 class="hero-name">Nicky Hadfat Sugianto</h1>
+        <p class="hero-handle">@JustNickyH</p>
+        <div class="hero-badges">
+          <span class="hero-badge hero-badge--primary">
+            <i class="fa-solid fa-circle-check"></i>
+            Microsoft Learn Student Ambassador
+          </span>
+          <span class="hero-badge hero-badge--secondary">
+            <i class="fa-solid fa-graduation-cap"></i>
+            Information Systems Student
+          </span>
+        </div>
+        <p class="hero-desc">
+          Selamat datang! Di sini saya membagikan modul pembelajaran resmi dari Microsoft dan catatan eksplorasi IT saya untuk membantu kawan-kawan mahasiswa meng-upgrade skill.
+        </p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/nicky-hadfat-sugianto" target="_blank" rel="noopener noreferrer" class="social-link social-link--linkedin" title="LinkedIn" id="social-linkedin">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.instagram.com/justnickyh?igsi=MWczY3A2OWc1bXlocA==" target="_blank" rel="noopener noreferrer" class="social-link social-link--instagram" title="Instagram" id="social-instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/6281317885811" target="_blank" rel="noopener noreferrer" class="social-link social-link--whatsapp" title="WhatsApp" id="social-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </header>
+
+  <!-- ========== TECH STACK STRIP ========== -->
+  <section class="tech-strip" id="techstack">
+    <div class="container">
+      <div class="tech-grid">
+        <div class="tech-item reveal">
+          <div class="tech-item-icon tech-item-icon--python">
+            <i class="fa-brands fa-python"></i>
+          </div>
+          <div>
+            <div class="tech-item-label">Python & Scripting</div>
+            <div class="tech-item-sub">Automation & Data</div>
+          </div>
+        </div>
+        <div class="tech-item reveal">
+          <div class="tech-item-icon tech-item-icon--linux">
+            <i class="fa-brands fa-linux"></i>
+          </div>
+          <div>
+            <div class="tech-item-label">Linux System Administration</div>
+            <div class="tech-item-sub">Server & Infrastructure</div>
+          </div>
+        </div>
+        <div class="tech-item reveal">
+          <div class="tech-item-icon tech-item-icon--ai">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <div>
+            <div class="tech-item-label">Generative AI & ML</div>
+            <div class="tech-item-sub">Machine Learning</div>
+          </div>
+        </div>
+        <div class="tech-item reveal">
+          <div class="tech-item-icon tech-item-icon--cloud">
+            <i class="fa-solid fa-cloud"></i>
+          </div>
+          <div>
+            <div class="tech-item-label">Cloud Computing</div>
+            <div class="tech-item-sub">Microsoft Azure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ========== MATERI SECTION ========== -->
   <section class="section" id="materi">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Learning Paths</span>
+        <span class="section-label"><i class="fa-solid fa-book-open"></i> Learning Paths</span>
         <h2 class="section-title">Pilih Materi Belajarmu</h2>
         <p class="section-subtitle">Modul resmi dari Microsoft Learn — interaktif, gratis, dan bisa kamu akses kapan saja.</p>
       </div>
 
       <div class="cards-grid">
-        <!-- Card 1: Azure Fundamentals -->
+        <!-- Card 1 -->
         <div class="card reveal">
           <div class="card-icon card-icon--azure">
-            <!-- Cloud Icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
-            </svg>
+            <i class="fa-solid fa-cloud"></i>
           </div>
+          <span class="card-tag">Azure Fundamentals</span>
           <h3 class="card-title">Fundamental Cloud Computing (Azure)</h3>
           <p class="card-desc">Pelajari konsep dasar cloud computing dan infrastruktur modern Microsoft Azure.</p>
-          <a
-            href="https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/?wt.mc_id=studentamb_641790"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-btn"
-            id="btn-azure"
-          >
-            Mulai Belajar
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <a href="https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/?wt.mc_id=studentamb_641790" target="_blank" rel="noopener noreferrer" class="card-btn" id="btn-azure">
+            Mulai Belajar <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
 
-        <!-- Card 2: Generative AI -->
+        <!-- Card 2 -->
         <div class="card reveal">
           <div class="card-icon card-icon--ai">
-            <!-- AI / Brain Icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/>
-              <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/>
-            </svg>
+            <i class="fa-solid fa-robot"></i>
           </div>
+          <span class="card-tag">AI-3025</span>
           <h3 class="card-title">Eksplorasi Generative AI (AI-3025)</h3>
           <p class="card-desc">Pahami cara kerja AI generatif dan implementasinya untuk mempermudah coding dan tugas harian.</p>
-          <a
-            href="https://learn.microsoft.com/en-us/training/courses/ai-3025?wt.mc_id=studentamb_641790"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-btn"
-            id="btn-ai"
-          >
-            Mulai Belajar
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <a href="https://learn.microsoft.com/en-us/training/courses/ai-3025?wt.mc_id=studentamb_641790" target="_blank" rel="noopener noreferrer" class="card-btn" id="btn-ai">
+            Mulai Belajar <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
 
-        <!-- Card 3: AZ-900 Certification -->
+        <!-- Card 3 -->
         <div class="card reveal">
           <div class="card-icon card-icon--cert">
-            <!-- Certificate / Shield Icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <polyline points="9 12 11 14 15 10"/>
-            </svg>
+            <i class="fa-solid fa-shield-halved"></i>
           </div>
+          <span class="card-tag">AZ-900</span>
           <h3 class="card-title">Persiapan Sertifikasi Microsoft Azure (AZ-900)</h3>
           <p class="card-desc">Modul wajib untuk persiapan mengambil sertifikasi IT internasional AZ-900 dari Microsoft.</p>
-          <a
-            href="https://learn.microsoft.com/en-us/training/courses/az-900t00?wt.mc_id=studentamb_641790"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-btn"
-            id="btn-cert"
-          >
-            Mulai Belajar
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <a href="https://learn.microsoft.com/en-us/training/courses/az-900t00?wt.mc_id=studentamb_641790" target="_blank" rel="noopener noreferrer" class="card-btn" id="btn-cert">
+            Mulai Belajar <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
       </div>
@@ -739,7 +974,7 @@
   <section class="section section--alt" id="keuntungan">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Kenapa Harus Mulai?</span>
+        <span class="section-label"><i class="fa-solid fa-star"></i> Kenapa Harus Mulai?</span>
         <h2 class="section-title">Keuntungan Belajar di Microsoft Learn</h2>
         <p class="section-subtitle">Platform resmi dari Microsoft yang dirancang untuk siapa saja — termasuk mahasiswa seperti kamu.</p>
       </div>
@@ -748,9 +983,7 @@
         <!-- Benefit 1 -->
         <div class="benefit-item reveal">
           <div class="benefit-icon benefit-icon--free">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-            </svg>
+            <i class="fa-solid fa-gift"></i>
           </div>
           <h3 class="benefit-title">100% Gratis</h3>
           <p class="benefit-desc">Semua modul bisa diakses tanpa biaya langganan. Cukup login dengan akun Microsoft, dan mulai belajar.</p>
@@ -759,9 +992,7 @@
         <!-- Benefit 2 -->
         <div class="benefit-item reveal">
           <div class="benefit-icon benefit-icon--badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-            </svg>
+            <i class="fa-solid fa-award"></i>
           </div>
           <h3 class="benefit-title">Badge & Trophy Digital</h3>
           <p class="benefit-desc">Dapatkan badge resmi dari Microsoft setelah menyelesaikan modul — bisa dipajang di profil LinkedIn kamu.</p>
@@ -770,9 +1001,7 @@
         <!-- Benefit 3 -->
         <div class="benefit-item reveal">
           <div class="benefit-icon benefit-icon--expert">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-            </svg>
+            <i class="fa-solid fa-chalkboard-user"></i>
           </div>
           <h3 class="benefit-title">Disusun oleh Ahli Industri</h3>
           <p class="benefit-desc">Materi interaktif dan step-by-step, disusun langsung oleh para engineer dan ahli di Microsoft.</p>
@@ -785,7 +1014,7 @@
   <section class="section">
     <div class="container">
       <div class="cta-banner reveal">
-        <h2>Siap Meng-upgrade Skill IT Kamu?</h2>
+        <h2><i class="fa-solid fa-rocket"></i> &nbsp;Siap Meng-upgrade Skill IT Kamu?</h2>
         <p>Pilih salah satu learning path di atas dan mulai perjalanan belajarmu hari ini. Gratis, resmi, dan diakui secara global.</p>
       </div>
     </div>
@@ -794,7 +1023,7 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
-      <p class="footer-text">Built by <span>Nicky</span> — Hosted on GitHub Pages</p>
+      <p class="footer-text">Built with 💻 by <span>Nicky Hadfat Sugianto</span> | Hosted on GitHub Pages</p>
     </div>
   </footer>
 
@@ -802,7 +1031,6 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const reveals = document.querySelectorAll('.reveal');
-
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -810,11 +1038,7 @@
             observer.unobserve(entry.target);
           }
         });
-      }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
-      });
-
+      }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
       reveals.forEach(el => observer.observe(el));
     });
   </script>
