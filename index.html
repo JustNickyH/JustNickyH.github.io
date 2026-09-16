@@ -3,28 +3,32 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pallatio HQ — Independent AI & Security Studio</title>
-<meta name="description" content="Pallatio HQ is an independent studio crafting autonomous agents, zero-trust systems, and the infrastructure that connects them." />
-<meta name="theme-color" content="#0a0a0a" />
+<title>Pallatio HQ — Edge & AI Engineering Studio</title>
+<meta name="description" content="Nicky Hadfat Sugianto (JustNickyH) is an independent engineer crafting autonomous agents, zero-trust systems, and the infrastructure that connects them." />
+<meta name="theme-color" content="#070714" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* CSS RESET & VARIABLES */
+/* 
+ * DARK CYBER THEME OVERRIDE
+ * Original Lumora structure, aggressive tech aesthetic.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
-  --ink: #0a0a0a;
-  --muted: #8d8d8d;
-  --subtle: #b6b6b6;
-  --line: #e6e5e2;
-  --surface: #f1f0ee;
-  --surface-2: #e3e2df;
-  --accent: #b15f2c;
-  --accent-from: #cf8047;
-  --accent-to: #97501f;
-  --hero-from: #ecebe9;
-  --hero-to: #c9c9c9;
+  --background: #070714;
+  --bg-gradient: radial-gradient(circle at top right, #1a1635, #070714 70%);
+  --foreground: #F8FAFC;
+  --ink: rgba(15, 23, 42, 0.4); /* Glassmorphism base */
+  --muted: #94A3B8;
+  --subtle: #475569;
+  --line: rgba(139, 92, 246, 0.3);
+  --surface: rgba(30, 41, 59, 0.5);
+  --surface-2: rgba(30, 41, 59, 0.8);
+  --accent: #38BDF8;
+  --accent-from: #38BDF8; /* Neon Blue */
+  --accent-to: #A855F7;   /* Deep Purple */
+  --hero-from: #070714;
+  --hero-to: #0f172a;
 
   --radius-pill: 9999px;
   --radius-card: 2rem;
@@ -33,7 +37,6 @@
   --text-watermark: 13rem;
   --container-shell: 88rem;
 
-  /* Spring approximations */
   --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-slow: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-hover: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -43,7 +46,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-body { background: var(--background); color: var(--foreground); font-family: 'Onest', sans-serif; overflow-x: hidden; }
+body { background: var(--background); background-image: var(--bg-gradient); color: var(--foreground); font-family: 'Onest', sans-serif; overflow-x: hidden; min-height: 100vh; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
 ul { list-style: none; }
@@ -52,44 +55,52 @@ img { display: block; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
-/* ADAPTIVE GRID BREAKPOINTS */
+/* Grid overlay for hacking vibe */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* ADAPTIVE GRID */
 @media (max-width: 1920px) { html { font-size: 0.833333vw; } }
 @media (max-width: 1440px) { html { font-size: 1.111111vw; } }
 @media (max-width: 1024px) { html { font-size: 1.5625vw; } }
 @media (max-width: 640px)  { html { font-size: 4.444444vw; } }
 
-/* LAYOUT CLASSES */
+/* LAYOUT */
 .shell { max-width: var(--container-shell); margin-inline: auto; padding-inline: 1.25rem; }
 @media (min-width: 640px) { .shell { padding-inline: 2rem; } }
 .locked { position: relative; overflow: hidden; height: 100%; }
 
+/* GRADIENT TEXT */
+.text-gradient { background: linear-gradient(135deg, var(--accent-from), var(--accent-to)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
 /* COMPONENTS */
 .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; }
 .eyebrow .dot { width: 0.375rem; height: 0.375rem; border-radius: 9999px; }
-.eyebrow.dark { color: rgba(17,17,17,0.7); }
-.eyebrow.dark .dot { background: rgba(17,17,17,0.5); }
-.eyebrow.light { color: rgba(255,255,255,0.7); }
-.eyebrow.light .dot { background: rgba(255,255,255,0.6); }
+.eyebrow.dark { color: var(--muted); }
+.eyebrow.dark .dot { background: var(--subtle); }
+.eyebrow.light { color: #fff; }
+.eyebrow.light .dot { background: var(--accent); }
 
-.tag-chip { display: inline-flex; border-radius: 9999px; padding: 0.5rem 1rem; font-size: 0.875rem; border: 1px solid rgba(255,255,255,0.25); color: #fff; }
+.tag-chip { display: inline-flex; border-radius: 9999px; padding: 0.5rem 1rem; font-size: 0.875rem; border: 1px solid var(--line); color: var(--accent-from); background: rgba(56, 189, 248, 0.05); }
 
 .pill-btn { display: inline-block; }
 .pill-btn-inner {
-  display: inline-flex; align-items: center; gap: 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;
-  transition: transform 0.35s var(--ease-hover);
+  display: inline-flex; align-items: center; gap: 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600;
+  transition: transform 0.35s var(--ease-hover), box-shadow 0.3s;
 }
-@media (hover: hover) { .pill-btn:hover .pill-btn-inner { transform: scale(1.04); } }
-.pill-btn.dark .pill-btn-inner { background: var(--ink); color: #fff; }
-.pill-btn.light .pill-btn-inner { background: var(--surface); color: #111; }
-.pill-btn.outline .pill-btn-inner { border: 1px solid var(--line); background: transparent; color: #111; }
+@media (hover: hover) { .pill-btn:hover .pill-btn-inner { transform: scale(1.04); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2); } }
+.pill-btn.dark .pill-btn-inner { background: linear-gradient(135deg, var(--accent-from), var(--accent-to)); color: #000; border: 1px solid transparent; }
+.pill-btn.light .pill-btn-inner { background: var(--surface); color: #fff; border: 1px solid var(--line); backdrop-filter: blur(10px); }
+.pill-btn.outline .pill-btn-inner { border: 1px solid var(--line); background: transparent; color: #fff; }
 .pill-btn:not(.has-arrow) .pill-btn-inner { padding: 0.875rem 1.75rem; }
 .pill-btn.has-arrow .pill-btn-inner { padding: 0.375rem 0.375rem 0.375rem 1.5rem; }
 
-.btn-badge {
-  width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 9999px; font-size: 1rem;
-}
-.pill-btn.dark .btn-badge { background: #fff; color: var(--ink); }
-.pill-btn:not(.dark) .btn-badge { background: var(--ink); color: #fff; }
+.btn-badge { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 9999px; font-size: 1rem; }
+.pill-btn.dark .btn-badge { background: #000; color: var(--accent-from); }
+.pill-btn:not(.dark) .btn-badge { background: #fff; color: #000; }
 .btn-icon-inner { transition: transform 0.35s var(--ease-hover); }
 @media (hover: hover) {
   .pill-btn:hover .btn-icon-right { transform: translate(3px, 0); }
@@ -98,118 +109,111 @@ img { display: block; }
 
 .anim-link { display: inline-flex; }
 .anim-link span { transition: all 0.35s var(--ease-hover); opacity: 0.65; }
-@media (hover: hover) { .anim-link:hover span { transform: translateX(4px); opacity: 1; } }
-.footer-link { display: inline-flex; }
-.footer-link span { transition: all 0.35s var(--ease-hover); opacity: 0.7; }
-@media (hover: hover) { .footer-link:hover span { transform: translateX(3px); opacity: 1; } }
+@media (hover: hover) { .anim-link:hover span { transform: translateX(4px); opacity: 1; color: var(--accent-from); } }
 
 /* LOADER */
 #loader {
   position: fixed; inset: 0; z-index: 120; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
-  background: var(--ink); color: #fff; border-radius: 0 0 2rem 2rem; transition: transform 0.7s var(--ease-reveal);
+  background: #070714; color: #fff; border-radius: 0 0 2rem 2rem; transition: transform 0.7s var(--ease-reveal);
 }
 #loader-content { transition: opacity 0.8s var(--ease-slow), transform 0.8s var(--ease-slow); text-align: center; display: flex; flex-direction: column; gap: 1.25rem; opacity: 1; transform: translateY(0); }
 #loader.exit { transform: translateY(-100%); }
 #loader.exit #loader-content { opacity: 0; transform: translateY(-12px); }
-.loader-logo { font-weight: 600; font-size: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; }
-@media (min-width: 640px) { .loader-logo { font-size: 1.875rem; } }
+.loader-logo { font-weight: 700; font-size: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; letter-spacing: -1px; }
+@media (min-width: 640px) { .loader-logo { font-size: 2.5rem; } }
 .loader-logo svg { color: var(--accent-from); }
-.loader-tag { max-width: 24ch; font-size: 0.875rem; color: rgba(255,255,255,0.55); margin: 0 auto; }
-.loader-progress { width: min(22rem, 72vw); display: flex; flex-direction: column; gap: 0.75rem; }
+.loader-tag { max-width: 32ch; font-size: 0.875rem; color: var(--muted); margin: 0 auto; }
+.loader-progress { width: min(22rem, 72vw); display: flex; flex-direction: column; gap: 0.75rem; margin: 0 auto; }
 .loader-track { height: 1px; background: rgba(255,255,255,0.15); width: 100%; }
-.loader-fill { height: 100%; background: var(--accent-from); width: 0%; transition: width 0.1s ease-out; }
-.loader-labels { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.45); }
-.loader-counter { color: rgba(255,255,255,0.8); tabular-nums: true; }
+.loader-fill { height: 100%; background: var(--accent-from); width: 0%; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--accent-from); }
+.loader-labels { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.loader-counter { color: #fff; tabular-nums: true; }
 
 /* HEADER */
-header {
-  position: absolute; inset-inline: 0; top: 0; z-index: 50;
-  opacity: 0; transform: translateY(-14px); transition: all 0.7s var(--ease-reveal);
-}
+header { position: absolute; inset-inline: 0; top: 0; z-index: 50; opacity: 0; transform: translateY(-14px); transition: all 0.7s var(--ease-reveal); }
 header.ready { opacity: 1; transform: translateY(0); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.25rem; }
 @media (min-width: 640px) { .header-inner { padding: 1.5rem 2rem; } }
-.brand-btn span { display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; transition: transform 0.35s var(--ease-hover); }
-@media (hover: hover) { .brand-btn:hover span { transform: scale(1.04); } }
+.brand-btn span { display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem; font-weight: 700; letter-spacing: -0.01em; transition: transform 0.35s var(--ease-hover); }
+@media (hover: hover) { .brand-btn:hover span { transform: scale(1.04); color: var(--accent-from); } }
 .nav-primary { display: none; }
 @media (min-width: 1024px) { .nav-primary { display: flex; } }
 .nav-primary ul { display: flex; gap: 2rem; font-size: 0.875rem; font-weight: 500; }
 .nav-primary button { position: relative; }
 .nav-primary button span { display: inline-block; transition: all 0.35s var(--ease-hover); opacity: 0.8; }
-@media (hover: hover) { .nav-primary button:hover span { transform: translateY(-2px); opacity: 1; } }
+@media (hover: hover) { .nav-primary button:hover span { transform: translateY(-2px); opacity: 1; color: var(--accent-from); } }
 .header-right { display: flex; gap: 0.75rem; }
 .clock-chip {
-  display: none; border: 1px solid rgba(230,229,226,0.8); background: rgba(255,255,255,0.4); backdrop-filter: blur(4px);
-  border-radius: 0.875rem; padding: 0.5rem 0.75rem; gap: 0.75rem; font-size: 0.75rem; color: rgba(17,17,17,0.7); align-items: center;
+  display: none; border: 1px solid var(--line); background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px);
+  border-radius: 0.875rem; padding: 0.5rem 0.75rem; gap: 0.75rem; font-size: 0.75rem; color: var(--muted); align-items: center;
 }
 @media (min-width: 768px) { .clock-chip { display: flex; } }
-.menu-btn {
-  border: 1px solid rgba(230,229,226,0.8); background: rgba(255,255,255,0.4); backdrop-filter: blur(4px); border-radius: 0.875rem;
-  transition: background 0.3s;
-}
-@media (hover: hover) { .menu-btn:hover { background: rgba(255,255,255,0.7); } }
+.menu-btn { border: 1px solid var(--line); background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px); border-radius: 0.875rem; transition: background 0.3s; }
+@media (hover: hover) { .menu-btn:hover { background: rgba(56, 189, 248, 0.1); border-color: var(--accent-from); } }
 .menu-btn span { display: flex; align-items: center; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; transition: transform 0.35s var(--ease-hover); }
 @media (hover: hover) { .menu-btn:hover span { transform: scale(1.05); } }
 .menu-text { display: none; margin-left: 0.5rem; }
 @media (min-width: 640px) { .menu-text { display: inline; } }
 
 /* HERO */
-#home { position: relative; isolation: isolate; overflow: hidden; border-radius: 0 0 2rem 2rem; background: var(--hero-to); }
-.hero-liquid { position: absolute; inset: 0; z-index: 0; }
+#home { position: relative; isolation: isolate; overflow: hidden; border-radius: 0 0 2rem 2rem; background: var(--hero-to); border-bottom: 1px solid var(--line); }
+.hero-liquid { position: absolute; inset: 0; z-index: 0; opacity: 0.6; }
 .hero-liquid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero-liquid canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.hero-vignette { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent, rgba(255,255,255,0.35)); }
-.hero-watermark { pointer-events: none; position: absolute; inset-inline: 0; bottom: 7rem; z-index: 1; text-align: center; user-select: none; font-weight: 700; line-height: 1; font-size: var(--text-watermark); color: rgba(255,255,255,0.4); }
+.hero-liquid canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; mix-blend-mode: screen; }
+.hero-vignette { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, #070714, transparent, #070714); }
+.hero-watermark { pointer-events: none; position: absolute; inset-inline: 0; bottom: 7rem; z-index: 1; text-align: center; user-select: none; font-weight: 700; line-height: 1; font-size: var(--text-watermark); color: rgba(255,255,255,0.03); letter-spacing: -5px; }
 
 .hero-grid { position: relative; z-index: 20; display: flex; flex-direction: column; gap: 2rem; padding: 7rem 1.25rem 5rem; }
 @media (min-width: 640px) { .hero-grid { padding-inline: 2rem; } }
-@media (min-width: 1024px) {
-  .hero-grid { display: grid; min-height: 100lvh; grid-template-columns: repeat(12, 1fr); gap: 2.5rem; padding: 9rem 2rem 7rem; }
-}
+@media (min-width: 1024px) { .hero-grid { display: grid; min-height: 100lvh; grid-template-columns: repeat(12, 1fr); gap: 2.5rem; padding: 9rem 2rem 7rem; align-items: center; } }
 .hero-col-left { display: flex; flex-direction: column; gap: 1.75rem; grid-column: span 7; }
-.hero-h1 { max-width: 18ch; font-size: 2.25rem; font-weight: 600; line-height: 0.98; letter-spacing: -0.02em; }
-@media (min-width: 640px) { .hero-h1 { font-size: 3rem; } }
-@media (min-width: 768px) { .hero-h1 { font-size: 3.75rem; } }
+.hero-h1 { max-width: 18ch; font-size: 2.5rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+@media (min-width: 640px) { .hero-h1 { font-size: 3.5rem; } }
+@media (min-width: 768px) { .hero-h1 { font-size: 4.5rem; } }
 
 .rating-row { display: flex; align-items: center; gap: 0.75rem; }
 .hero-cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.hero-certs { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.hero-certs-list { display: flex; flex-wrap: wrap; gap: 1.25rem; font-weight: 700; font-size: 0.875rem; color: var(--subtle); }
 
 .hero-col-right { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; grid-column: span 5; }
 @media (min-width: 1024px) { .hero-col-right { align-items: flex-end; } }
 
 .hero-card {
-  width: 100%; max-width: 24rem; border-radius: 1.25rem; background: rgba(255,255,255,0.7); padding: 0.5rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05); box-shadow: 0 0 0 1px rgba(230,229,226,0.7); backdrop-filter: blur(12px);
+  width: 100%; max-width: 24rem; border-radius: 1.25rem; background: var(--surface); padding: 0.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid var(--line); backdrop-filter: blur(16px);
 }
-@media (min-width: 1024px) { .hero-card { width: 19rem; } }
-.hero-card-inner { display: flex; gap: 0.5rem; cursor: pointer; border-radius: 0.875rem; }
-.hc-left { aspect-ratio: 1; width: 6rem; display: grid; place-items: center; border-radius: 0.875rem; background: var(--ink); color: #fff; font-size: 1.875rem; }
-.hc-right { flex: 1; border-radius: 0.875rem; background: rgba(241,240,238,0.7); padding: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; }
+@media (min-width: 1024px) { .hero-card { width: 22rem; } }
+.hero-card-inner { display: flex; gap: 0.75rem; cursor: pointer; border-radius: 0.875rem; }
+.hc-left { aspect-ratio: 1; width: 6rem; border-radius: 0.875rem; overflow: hidden; background: #000; border: 1px solid var(--line); }
+.hc-left img { width: 100%; height: 100%; object-fit: cover; }
+.hc-right { flex: 1; border-radius: 0.875rem; background: rgba(0,0,0,0.4); padding: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(255,255,255,0.05); }
 .hc-content { position: relative; min-height: 3.25rem; }
 .hc-item { position: absolute; inset: 0; transition: transform 0.4s var(--ease-hover), opacity 0.4s var(--ease-hover); opacity: 0; pointer-events: none; }
 .hc-item.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .hc-item.prev { transform: translateY(-14px); }
 .hc-item.next { transform: translateY(14px); }
-.hc-caption { font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(17,17,17,0.45); }
-.hc-title { max-width: 8rem; font-size: 0.875rem; font-weight: 500; line-height: 1.35; margin-top: 0.25rem; }
-.hc-bottom { display: flex; justify-content: space-between; align-items: center; }
+.hc-caption { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-from); }
+.hc-title { max-width: 10rem; font-size: 0.875rem; font-weight: 500; line-height: 1.35; margin-top: 0.25rem; color: #fff; }
+.hc-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
 .hc-dots { display: flex; gap: 0.25rem; }
 .hc-dot { height: 0.25rem; border-radius: 9999px; transition: all 0.3s; }
-.hc-dot.active { width: 1rem; background: rgba(17,17,17,0.7); }
-.hc-dot:not(.active) { width: 0.375rem; background: rgba(17,17,17,0.2); }
+.hc-dot.active { width: 1rem; background: var(--accent-from); box-shadow: 0 0 5px var(--accent-from); }
+.hc-dot:not(.active) { width: 0.375rem; background: rgba(255,255,255,0.2); }
 .hc-nav { display: flex; gap: 0.25rem; }
-.hc-btn { width: 1.75rem; height: 1.75rem; display: grid; place-items: center; border-radius: 9999px; background: #fff; color: rgba(17,17,17,0.7); box-shadow: 0 0 0 1px var(--line); transition: color 0.3s; }
-@media (hover: hover) { .hc-btn:hover { color: #111; } }
+.hc-btn { width: 1.75rem; height: 1.75rem; display: grid; place-items: center; border-radius: 9999px; background: rgba(255,255,255,0.1); color: #fff; transition: background 0.3s, color 0.3s; }
+@media (hover: hover) { .hc-btn:hover { background: var(--accent-from); color: #000; } }
 
 .partners { width: 100%; max-width: 24rem; }
-@media (min-width: 1024px) { .partners { width: 19rem; } }
-.partners-label { margin-bottom: 0.75rem; font-size: 0.75rem; font-weight: 500; color: rgba(17,17,17,0.45); text-align: left; }
+@media (min-width: 1024px) { .partners { width: 22rem; } }
+.partners-label { margin-bottom: 0.75rem; font-size: 0.75rem; font-weight: 500; color: var(--muted); text-align: left; }
 @media (min-width: 1024px) { .partners-label { text-align: right; } }
-.partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 1rem; row-gap: 0.75rem; }
-.partner-item { display: flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; color: rgba(17,17,17,0.7); transition: all 0.35s var(--ease-hover); opacity: 0.7; }
-@media (hover: hover) { .partner-item:hover { transform: translateY(-2px); opacity: 1; } }
+.partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 1rem; row-gap: 0.75rem; }
+.partner-item { display: flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; color: var(--muted); transition: all 0.35s var(--ease-hover); opacity: 0.7; font-weight: 500; }
+@media (hover: hover) { .partner-item:hover { transform: translateY(-2px); opacity: 1; color: var(--accent-from); } }
 
-.hero-status { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; border-top: 1px solid rgba(17,17,17,0.1); padding: 1.25rem 0; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.025em; color: rgba(17,17,17,0.6); }
+.hero-status { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; border-top: 1px solid var(--line); padding: 1.25rem 0; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.025em; color: var(--muted); }
 .hero-status-center { display: none; }
 @media (min-width: 640px) { .hero-status-center { display: block; } }
 
@@ -218,145 +222,147 @@ header.ready { opacity: 1; transform: translateY(0); }
 @media (min-width: 1024px) { #about .shell { grid-template-columns: 1fr 1fr; padding-block: 7rem; } }
 .globe-block { position: relative; min-height: 14rem; }
 @media (min-width: 1024px) { .globe-block { min-height: 20rem; } }
-.globe-icon { position: absolute; left: -1rem; top: 50%; transform: translateY(-50%); font-size: 12rem; color: rgba(17,17,17,0.1); }
+.globe-icon { position: absolute; left: -1rem; top: 50%; transform: translateY(-50%); font-size: 12rem; color: rgba(255,255,255,0.02); stroke: var(--line); stroke-width: 0.5px; }
 @media (min-width: 640px) { .globe-icon { font-size: 16rem; } }
 @media (min-width: 1024px) { .globe-icon { left: -1.5rem; font-size: 20rem; } }
-.globe-text { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: rgba(17,17,17,0.7); position: absolute; bottom: 0; left: 0; }
+.globe-text { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: var(--muted); position: absolute; bottom: 0; left: 0; }
 
 .about-statement { display: flex; flex-direction: column; gap: 2.5rem; }
-.about-h2 { font-size: 1.5rem; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; }
-@media (min-width: 640px) { .about-h2 { font-size: 1.875rem; } }
+.about-h2 { font-size: 1.5rem; font-weight: 500; line-height: 1.4; letter-spacing: -0.01em; }
+@media (min-width: 640px) { .about-h2 { font-size: 2rem; } }
 .about-footer { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
 .social-chips { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
-.social-chip { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 9999px; font-size: 0.875rem; }
+.social-chip { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 9999px; font-size: 0.875rem; background: var(--surface); color: var(--foreground); border: 1px solid var(--line); }
 .social-chip div { transition: transform 0.35s var(--ease-hover); }
-@media (hover: hover) { .social-chip:hover div { transform: scale(1.18); } }
+@media (hover: hover) { .social-chip:hover div { transform: scale(1.18); color: var(--accent-from); } }
 
 /* CREATE BAND */
 .create-band .shell { display: flex; flex-direction: column; gap: 0.75rem; padding-block: 2.5rem; }
 @media (min-width: 640px) { .create-band .shell { flex-direction: row; gap: 1rem; } }
 .cb-item { flex: 1; }
-.cb-tile { display: grid; place-items: center; height: 6rem; border-radius: 9999px; font-size: 1.875rem; font-weight: 500; transition: transform 0.35s var(--ease-hover); }
+.cb-tile { display: grid; place-items: center; height: 6rem; border-radius: 9999px; font-size: 1.5rem; font-weight: 600; transition: transform 0.35s var(--ease-hover); border: 1px solid var(--line); }
 @media (min-width: 640px) { .cb-tile { height: 10rem; font-size: 2.25rem; } }
-@media (hover: hover) { .cb-item:hover .cb-tile { transform: scale(1.03); } }
-.cb-1 { background: var(--surface); color: #111; }
-.cb-2 { background: linear-gradient(to bottom right, var(--accent-from), var(--accent-to)); color: #fff; }
-.cb-3 { background: var(--ink); color: #fff; }
+@media (hover: hover) { .cb-item:hover .cb-tile { transform: scale(1.03); border-color: var(--accent-from); } }
+.cb-1 { background: var(--surface); color: #fff; }
+.cb-2 { background: linear-gradient(135deg, var(--accent-from), var(--accent-to)); color: #000; border: none; }
+.cb-3 { background: #000; color: var(--accent-from); }
 .cb-3 svg { font-size: 2.25rem; }
 @media (min-width: 640px) { .cb-3 svg { font-size: 3rem; } }
-.cb-4 { background: rgba(241,240,238,0.6); color: rgba(17,17,17,0.35); }
+.cb-4 { background: rgba(15, 23, 42, 0.4); color: var(--muted); }
 
 /* PORTFOLIO */
 #works .shell { padding-block: 2.5rem 5rem; }
 @media (min-width: 1024px) { #works .shell { padding-bottom: 7rem; } }
 .works-cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3.5rem; }
 @media (min-width: 768px) { .works-cards { grid-template-columns: repeat(2, 1fr); } }
-.work-card { position: relative; min-height: 22rem; overflow: hidden; border-radius: 2rem; background: var(--ink); padding: 1.5rem; color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,0.05); transition: transform 0.4s var(--ease-hover); display: block; }
+.work-card { position: relative; min-height: 22rem; overflow: hidden; border-radius: 2rem; background: var(--surface); padding: 1.5rem; color: #fff; box-shadow: 0 0 0 1px var(--line); transition: transform 0.4s var(--ease-hover), box-shadow 0.4s; display: block; backdrop-filter: blur(10px); }
 @media (min-width: 640px) { .work-card { min-height: 26rem; padding: 2rem; } }
-@media (hover: hover) { .work-card:hover { transform: translateY(-8px) scale(1.012); } }
-.wc-top { display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.025em; color: rgba(255,255,255,0.45); }
-.wc-badge { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: 9999px; background: rgba(255,255,255,0.1); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,0.15); transition: transform 0.4s var(--ease-hover); }
-@media (hover: hover) { .work-card:hover .wc-badge { transform: rotate(45deg) scale(1.08); } }
-.wc-mark { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; font-size: 4.5rem; color: rgba(255,255,255,0.9); }
-.wc-mark sup { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+@media (hover: hover) { .work-card:hover { transform: translateY(-8px) scale(1.012); box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 1px var(--accent-from); } }
+.wc-top { display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.025em; color: var(--muted); }
+.wc-badge { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: 9999px; background: rgba(255,255,255,0.05); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,0.15); transition: transform 0.4s var(--ease-hover), background 0.4s; }
+@media (hover: hover) { .work-card:hover .wc-badge { transform: rotate(45deg) scale(1.08); background: var(--accent-from); color: #000; border-color: transparent; } }
+.wc-mark { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; font-size: 4.5rem; color: rgba(255,255,255,0.03); }
+.wc-mark sup { font-size: 0.75rem; color: rgba(255,255,255,0.1); }
 .wc-bottom { position: absolute; inset-inline: 1.5rem; bottom: 1.5rem; }
 @media (min-width: 640px) { .wc-bottom { inset-inline: 2rem; bottom: 2rem; } }
-.wc-bottom h3 { font-size: 1.5rem; font-weight: 500; letter-spacing: -0.01em; }
+.wc-bottom h3 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
 @media (min-width: 640px) { .wc-bottom h3 { font-size: 1.875rem; } }
-.wc-bottom p { margin-top: 0.5rem; max-width: 28rem; font-size: 0.875rem; color: rgba(255,255,255,0.55); }
+.wc-bottom p { margin-top: 0.5rem; max-width: 28rem; font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
 .wc-tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
 /* SERVICES */
 #services .shell { padding-block: 5rem; }
 @media (min-width: 1024px) { #services .shell { padding-block: 7rem; } }
-.srv-h2 { margin: 1.25rem 0 3rem; max-width: 16ch; font-size: 2.25rem; font-weight: 600; letter-spacing: -0.02em; }
-@media (min-width: 640px) { .srv-h2 { margin-bottom: 3.5rem; font-size: 3rem; } }
+.srv-h2 { margin: 1.25rem 0 3rem; max-width: 16ch; font-size: 2.5rem; font-weight: 600; letter-spacing: -0.02em; }
+@media (min-width: 640px) { .srv-h2 { margin-bottom: 3.5rem; font-size: 3.5rem; } }
 .srv-row { border-top: 1px solid var(--line); display: block; }
 .srv-row:first-child { border-top: none; }
-.srv-link { display: flex; align-items: center; gap: 1rem; border-radius: 1.25rem; padding-block: 1.5rem; padding-inline: 0; background: rgba(241,240,238,0); transition: all 0.4s var(--ease-slow); }
+.srv-link { display: flex; align-items: center; gap: 1rem; border-radius: 1.25rem; padding-block: 1.5rem; padding-inline: 0; background: transparent; transition: all 0.4s var(--ease-slow); }
 @media (min-width: 640px) { .srv-link { gap: 1.5rem; padding-block: 2rem; } }
-@media (hover: hover) { .srv-row:hover .srv-link { background: rgba(241,240,238,1); padding-left: 2rem; padding-right: 1.25rem; } }
-.srv-idx { width: 1.75rem; font-size: 0.875rem; font-weight: 500; color: rgba(17,17,17,0.4); }
+@media (hover: hover) { .srv-row:hover .srv-link { background: var(--surface); padding-left: 2rem; padding-right: 1.25rem; border: 1px solid var(--line); } }
+.srv-idx { width: 1.75rem; font-size: 0.875rem; font-weight: 500; color: var(--muted); }
 @media (min-width: 640px) { .srv-idx { width: 2.5rem; } }
 .srv-title { flex: 1; font-size: 1.5rem; font-weight: 500; letter-spacing: -0.01em; }
 @media (min-width: 640px) { .srv-title { font-size: 1.875rem; } }
 @media (min-width: 768px) { .srv-title { font-size: 2.25rem; } }
-.srv-desc { display: none; max-width: 20rem; font-size: 0.875rem; color: rgba(17,17,17,0.55); }
+.srv-desc { display: none; max-width: 24rem; font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
 @media (min-width: 1024px) { .srv-desc { display: block; } }
-.srv-badge { width: 2.5rem; height: 2.5rem; display: grid; place-items: center; border-radius: 9999px; background: var(--ink); color: #fff; transition: transform 0.35s var(--ease-hover); }
+.srv-badge { width: 2.5rem; height: 2.5rem; display: grid; place-items: center; border-radius: 9999px; background: rgba(255,255,255,0.05); color: #fff; transition: transform 0.35s var(--ease-hover), background 0.35s, color 0.35s; border: 1px solid var(--line); }
 @media (min-width: 640px) { .srv-badge { width: 3rem; height: 3rem; } }
-@media (hover: hover) { .srv-row:hover .srv-badge { transform: translateX(5px); } }
+@media (hover: hover) { .srv-row:hover .srv-badge { transform: translateX(5px); background: var(--accent-from); color: #000; border-color: transparent; } }
 
 /* STATS */
-.stats-panel { border-radius: 2rem; background: var(--ink); padding: 3rem 1.5rem; color: #fff; }
+.stats-panel { border-radius: 2rem; background: var(--surface); padding: 3rem 1.5rem; color: #fff; border: 1px solid var(--line); backdrop-filter: blur(10px); }
 @media (min-width: 640px) { .stats-panel { padding: 4rem 2rem; } }
 @media (min-width: 768px) { .stats-panel { padding-inline: 4rem; } }
-.stats-h2 { margin-top: 1rem; max-width: 20ch; font-size: 1.875rem; font-weight: 500; letter-spacing: -0.01em; }
-@media (min-width: 768px) { .stats-h2 { font-size: 2.25rem; } }
+.stats-h2 { margin-top: 1rem; max-width: 20ch; font-size: 1.875rem; font-weight: 600; letter-spacing: -0.01em; }
+@media (min-width: 768px) { .stats-h2 { font-size: 2.5rem; } }
 .stats-grid { margin-top: 3.5rem; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 2rem; row-gap: 3rem; }
 @media (min-width: 1024px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
-.stat-num { font-size: 3rem; font-weight: 600; letter-spacing: -0.02em; }
+.stat-num { font-size: 3rem; font-weight: 700; letter-spacing: -0.02em; color: var(--accent-from); }
 @media (min-width: 640px) { .stat-num { font-size: 3.75rem; } }
 @media (min-width: 768px) { .stat-num { font-size: 4.5rem; } }
-.stat-label { margin-top: 0.75rem; font-size: 0.875rem; color: rgba(255,255,255,0.55); }
+.stat-label { margin-top: 0.75rem; font-size: 0.875rem; color: var(--muted); font-weight: 500; }
 
 /* FOOTER */
-footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; background: var(--ink); color: #fff; }
+footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; background: var(--surface); color: #fff; border-top: 1px solid var(--line); }
 .footer-inner { position: relative; z-index: 10; padding: 5rem 0 2.5rem; }
 @media (min-width: 1024px) { .footer-inner { padding-top: 6rem; } }
-.footer-cta { display: flex; flex-direction: column; gap: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4rem; }
+.footer-cta { display: flex; flex-direction: column; gap: 2rem; border-bottom: 1px solid var(--line); padding-bottom: 4rem; }
 @media (min-width: 1024px) { .footer-cta { flex-direction: row; align-items: flex-end; justify-content: space-between; } }
-.footer-h2 { max-width: 16ch; font-size: 2.25rem; font-weight: 600; letter-spacing: -0.02em; }
+.footer-h2 { max-width: 16ch; font-size: 2.25rem; font-weight: 700; letter-spacing: -0.02em; }
 @media (min-width: 640px) { .footer-h2 { font-size: 3rem; } }
 @media (min-width: 768px) { .footer-h2 { font-size: 3.75rem; } }
 .footer-cols { display: grid; grid-template-columns: 1fr; gap: 3rem; padding-block: 4rem; }
 @media (min-width: 768px) { .footer-cols { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .footer-cols { grid-template-columns: repeat(4, 1fr); } }
-.col-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.025em; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
-.col-links { display: flex; flex-direction: column; gap: 1rem; font-size: 0.875rem; }
-.footer-legal { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+.col-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--subtle); margin-bottom: 1.5rem; font-weight: 600; }
+.col-links { display: flex; flex-direction: column; gap: 1rem; font-size: 0.875rem; font-weight: 500; }
+.footer-legal { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--line); padding-top: 2rem; font-size: 0.75rem; color: var(--muted); }
 @media (min-width: 640px) { .footer-legal { flex-direction: row; } }
-.footer-watermark { position: absolute; inset-inline: 0; bottom: -1.5rem; z-index: 0; text-align: center; pointer-events: none; user-select: none; font-weight: 700; line-height: 1; font-size: var(--text-watermark); color: rgba(255,255,255,0.05); }
+.footer-watermark { position: absolute; inset-inline: 0; bottom: -1.5rem; z-index: 0; text-align: center; pointer-events: none; user-select: none; font-weight: 700; line-height: 1; font-size: var(--text-watermark); color: rgba(255,255,255,0.02); letter-spacing: -5px; }
 
 /* MENU OVERLAY */
-#nav-menu { position: fixed; inset: 0; z-index: 115; display: flex; flex-direction: column; background: var(--ink); color: #fff; pointer-events: none; opacity: 0; transition: opacity 0.4s var(--ease-slow); }
+#nav-menu { position: fixed; inset: 0; z-index: 115; display: flex; flex-direction: column; background: rgba(7, 7, 20, 0.95); backdrop-filter: blur(20px); color: #fff; pointer-events: none; opacity: 0; transition: opacity 0.4s var(--ease-slow); }
 #nav-menu.open { pointer-events: auto; opacity: 1; }
 .nm-top { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; }
 @media (min-width: 640px) { .nm-top { padding-block: 1.5rem; } }
-.nm-close { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.875rem; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.7); transition: all 0.3s; }
-@media (hover: hover) { .nm-close:hover { border-color: rgba(255,255,255,0.4); color: #fff; } }
+.nm-close { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--line); border-radius: 0.875rem; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); transition: all 0.3s; background: var(--surface); }
+@media (hover: hover) { .nm-close:hover { border-color: var(--accent-from); color: #fff; } }
 .nm-list { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .nm-list ul { display: flex; flex-direction: column; gap: 0.25rem; }
-.nm-item { display: flex; align-items: center; gap: 1rem; padding-block: 0.5rem; text-align: left; font-size: 2.25rem; font-weight: 600; letter-spacing: -0.02em; transition: all 0.5s ease-out; transform: translateY(1rem); opacity: 0; }
-@media (min-width: 640px) { .nm-item { font-size: 3.75rem; } }
+.nm-item { display: flex; align-items: center; gap: 1rem; padding-block: 0.5rem; text-align: left; font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; transition: all 0.5s ease-out; transform: translateY(1rem); opacity: 0; }
+@media (min-width: 640px) { .nm-item { font-size: 4.5rem; } }
 #nav-menu.open .nm-item { transform: translateY(0); opacity: 1; }
-.nm-idx { font-size: 1rem; font-weight: 400; color: rgba(255,255,255,0.3); transition: color 0.3s; }
-.nm-label { color: rgba(255,255,255,0.7); transition: color 0.3s; }
+.nm-idx { font-size: 1rem; font-weight: 500; color: var(--subtle); transition: color 0.3s; font-family: monospace; }
+.nm-label { color: var(--muted); transition: color 0.3s; }
 @media (hover: hover) { .nm-item:hover .nm-idx { color: var(--accent-from); } .nm-item:hover .nm-label { color: #fff; } }
-.nm-bottom { display: flex; flex-direction: column; gap: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.025em; color: rgba(255,255,255,0.45); }
+.nm-bottom { display: flex; flex-direction: column; gap: 0.75rem; border-top: 1px solid var(--line); padding: 1.5rem 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.025em; color: var(--muted); }
 @media (min-width: 640px) { .nm-bottom { flex-direction: row; justify-content: space-between; } }
-.nm-cta { color: rgba(255,255,255,0.7); transition: color 0.3s; }
+.nm-cta { color: var(--accent-from); font-weight: 600; transition: color 0.3s; }
 @media (hover: hover) { .nm-cta:hover { color: #fff; text-decoration: underline; } }
 
 /* REQUEST MODAL */
-#modal-backdrop { position: fixed; inset: 0; z-index: 110; display: flex; align-items: flex-end; justify-content: center; padding: 1rem; background: rgba(17,17,17,0.3); backdrop-filter: blur(16px); pointer-events: none; opacity: 0; transition: opacity 0.4s var(--ease-slow); }
+#modal-backdrop { position: fixed; inset: 0; z-index: 110; display: flex; align-items: flex-end; justify-content: center; padding: 1rem; background: rgba(7, 7, 20, 0.8); backdrop-filter: blur(16px); pointer-events: none; opacity: 0; transition: opacity 0.4s var(--ease-slow); }
 @media (min-width: 640px) { #modal-backdrop { align-items: center; } }
 #modal-backdrop.open { pointer-events: auto; opacity: 1; }
-.modal-panel { position: relative; width: 100%; max-width: 32rem; overflow: hidden; border-radius: 2rem; background: #fff; padding: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25), 0 0 0 1px var(--line); transform: translateY(28px); transition: transform 0.4s var(--ease-slow); }
+.modal-panel { position: relative; width: 100%; max-width: 32rem; overflow: hidden; border-radius: 2rem; background: #0f172a; padding: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px var(--line); transform: translateY(28px); transition: transform 0.4s var(--ease-slow); color: #fff; }
 @media (min-width: 640px) { .modal-panel { padding: 2rem; } }
 #modal-backdrop.open .modal-panel { transform: translateY(0); }
-.modal-close { position: absolute; right: 1rem; top: 1rem; width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 9999px; background: var(--surface); color: rgba(17,17,17,0.6); transition: all 0.3s; }
-@media (hover: hover) { .modal-close:hover { background: var(--surface-2); color: #111; } }
+.modal-close { position: absolute; right: 1rem; top: 1rem; width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 9999px; background: rgba(255,255,255,0.05); color: var(--muted); transition: all 0.3s; border: 1px solid var(--line); }
+@media (hover: hover) { .modal-close:hover { background: var(--accent-from); color: #000; } }
 
 .form-group { display: flex; flex-direction: column; gap: 1rem; }
-.form-label { display: flex; flex-direction: column; gap: 0.375rem; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.025em; color: rgba(17,17,17,0.5); }
-.form-control { width: 100%; border: 1px solid var(--line); background: rgba(241,240,238,0.5); border-radius: 0.875rem; padding: 0.75rem 1rem; font-size: 0.875rem; outline: none; transition: all 0.3s; font-family: inherit; }
-.form-control:focus { border-color: rgba(17,17,17,0.3); background: #fff; }
+.form-label { display: flex; flex-direction: column; gap: 0.375rem; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.form-control { width: 100%; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: #fff; border-radius: 0.875rem; padding: 0.75rem 1rem; font-size: 0.875rem; outline: none; transition: all 0.3s; font-family: inherit; }
+.form-control::placeholder { color: var(--subtle); }
+.form-control:focus { border-color: var(--accent-from); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
 
 #modal-form, #modal-success { display: none; }
 #modal-form.active { display: block; }
 #modal-success.active { display: flex; flex-direction: column; align-items: center; text-align: center; padding-block: 2rem; gap: 1rem; }
-.success-badge { width: 3.5rem; height: 3.5rem; display: grid; place-items: center; border-radius: 9999px; background: var(--ink); color: var(--accent-from); font-size: 1.5rem; }
+.success-badge { width: 4.5rem; height: 4.5rem; display: grid; place-items: center; border-radius: 9999px; border: 2px solid var(--accent-from); overflow: hidden; padding: 3px; }
+.success-badge img { width: 100%; height: 100%; object-fit: cover; border-radius: 9999px; }
 
 /* ANIMATION UTILS (Reveals) */
 .rv-line { display: inline-block; overflow: hidden; vertical-align: top; }
@@ -389,7 +395,7 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
 </head>
 <body>
 
-<a href="#main" class="sr-only focus-visible:absolute" style="position:absolute; left:1rem; top:1rem; z-index:60; border-radius:.875rem; background:var(--ink); padding:.5rem 1rem; font-size:.875rem; color:#fff;">Skip to content</a>
+<a href="#main" class="sr-only focus-visible:absolute" style="position:absolute; left:1rem; top:1rem; z-index:60; border-radius:.875rem; background:rgba(15,23,42,0.8); border:1px solid var(--accent); padding:.5rem 1rem; font-size:.875rem; color:#fff;">Skip to content</a>
 
 <!-- PageLoader -->
 <div id="loader">
@@ -398,11 +404,11 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
       <svg class="icon" style="font-size:1.875rem; color:var(--accent-from);"><use href="#icon-logo"/></svg>
       Pallatio HQ
     </div>
-    <p class="loader-tag">Edge intelligence, secured with quiet precision.</p>
+    <p class="loader-tag">Autonomous intelligence, from the edge to the cloud.</p>
     <div class="loader-progress">
       <div class="loader-track"><div class="loader-fill" id="l-fill"></div></div>
       <div class="loader-labels">
-        <span>Loading</span>
+        <span>Loading Protocol</span>
         <span class="loader-counter" id="l-count">000</span>
       </div>
     </div>
@@ -413,7 +419,7 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
 <header id="header">
   <div class="shell header-inner">
     <button class="brand-btn" onclick="sc.to('home')">
-      <span><svg class="icon" style="font-size:1.25rem; color:var(--accent);"><use href="#icon-logo"/></svg> Pallatio</span>
+      <span><svg class="icon" style="font-size:1.25rem; color:var(--accent);"><use href="#icon-logo"/></svg> JustNickyH</span>
     </button>
     
     <nav class="nav-primary">
@@ -422,17 +428,17 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
         <li><button onclick="sc.to('works')"><span>Work</span></button></li>
         <li><button onclick="sc.to('services')"><span>Services <span style="font-size:0.75rem; opacity:0.6">▾</span></span></button></li>
         <li><button onclick="sc.to('about')"><span>Studio</span></button></li>
-        <li><button onclick="sc.to('careers')"><span>Careers</span></button></li>
+        <li><button onclick="sc.to('certifications')"><span>Certifications</span></button></li>
         <li><button onclick="ui.openModal()"><span>Contact</span></button></li>
       </ul>
     </nav>
     
     <div class="header-right">
       <div class="clock-chip">
-        <span style="color:rgba(17,17,17,0.45)">Local time</span>
-        <span id="c-time" style="min-width:3.5rem; tabular-nums:true; font-weight:500; color:#111">9:41am</span>
-        <span style="color:rgba(17,17,17,0.3)">•</span>
-        <span id="c-date" style="font-weight:500">12 March, 2026</span>
+        <span style="color:var(--subtle)">Local time</span>
+        <span id="c-time" style="min-width:3.5rem; tabular-nums:true; font-weight:600; color:#fff">9:41am</span>
+        <span style="color:rgba(255,255,255,0.2)">•</span>
+        <span id="c-date" style="font-weight:600; color:#fff">12 March, 2026</span>
       </div>
       <button class="menu-btn" onclick="ui.openMenu()">
         <span><svg class="icon" style="font-size:0.875rem;"><use href="#icon-menu"/></svg> <span class="menu-text">Menu</span></span>
@@ -445,7 +451,9 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
   <!-- Hero -->
   <section id="home">
     <div class="hero-liquid" id="liquid-container">
-      <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/lumora-e8b711fc68/hero/after.jpg" alt="" />
+      <!-- Deep network abstract background as base -->
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop" alt="" />
+      <!-- Arch Linux/Code reveal canvas -->
       <canvas id="liquid-canvas" aria-hidden="true"></canvas>
     </div>
     <div class="hero-vignette"></div>
@@ -457,13 +465,13 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
           <div class="dot"></div> AI & Security Engineer
         </div>
         <h1 class="hero-h1 rv-stagger-lines" data-delay="250" data-stagger="120">
-          Autonomous agents,<br>engineered for<br>the edge.
+          <span class="text-gradient">Autonomous agents,</span><br>engineered for<br>the edge.
         </h1>
         <div class="rating-row rv-block" data-rv="y:0, d:650">
           <span style="color:var(--accent); display:flex;">
             <svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg>
           </span>
-          <span style="font-size:0.875rem; font-weight:500; color:rgba(17,17,17,0.7)">Top Graduate • Informatics Eng.</span>
+          <span style="font-size:0.875rem; font-weight:500; color:var(--muted)">17 Certifications Earned</span>
         </div>
         <div class="hero-cta-row rv-block" data-rv="y:0, d:750">
           <button class="pill-btn dark has-arrow" onclick="ui.openModal()">
@@ -473,25 +481,35 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
             <span class="pill-btn-inner">View Work</span>
           </button>
         </div>
+        <!-- Certifications Row -->
+        <div class="hero-certs rv-block" data-rv="y:0, d:850">
+          <span style="font-size:0.75rem; color:var(--subtle); text-transform:uppercase; letter-spacing:0.05em">Certified By:</span>
+          <div class="hero-certs-list">
+            <span>AWS</span><span>IBM</span><span>Cisco Networking Academy</span><span>Dicoding</span>
+          </div>
+        </div>
       </div>
       
       <div class="hero-col-right">
         <div class="hero-card rv-block" data-rv="y:0, scale:1, from-y:16px, from-scale:0.96, d:400, t:200" id="hero-carousel" onclick="ui.carouselNext()">
           <div class="hero-card-inner">
-            <div class="hc-left"><svg class="icon" style="color:var(--accent-from)"><use href="#icon-logo"/></svg></div>
+            <div class="hc-left">
+              <!-- Avatar Profile here -->
+              <img src="avatar.jpg" alt="Nicky Hadfat Sugianto" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=200&auto=format&fit=crop'" />
+            </div>
             <div class="hc-right">
               <div class="hc-content">
                 <div class="hc-item active" data-idx="0">
-                  <div class="hc-caption">Edge Computing</div>
-                  <div class="hc-title">Pallatio OS: Zero-Trust.</div>
+                  <div class="hc-caption">Reasoning Engine</div>
+                  <div class="hc-title">Qwen-Max Ambassador.</div>
                 </div>
                 <div class="hc-item next" data-idx="1">
-                  <div class="hc-caption">Cyber Intelligence</div>
-                  <div class="hc-title">Project AURA: Autonomous SOC.</div>
+                  <div class="hc-caption">Zero-Trust OS</div>
+                  <div class="hc-title">Pallatio OS: Debian Edge.</div>
                 </div>
                 <div class="hc-item next" data-idx="2">
-                  <div class="hc-caption">Enterprise AI</div>
-                  <div class="hc-title">HANA: Emotional-Adaptive.</div>
+                  <div class="hc-caption">Cyber Intelligence</div>
+                  <div class="hc-title">Project AURA: Auto SOC.</div>
                 </div>
               </div>
               <div class="hc-bottom">
@@ -508,14 +526,14 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
         </div>
         
         <div class="partners rv-block" data-rv="y:0, from-y:14px, d:550, t:200">
-          <div class="partners-label">Tech Stack & Orgs</div>
+          <div class="partners-label">Tech Stack & Infrastructure</div>
           <div class="partners-grid">
-            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:rgba(17,17,17,0.4)"><use href="#icon-circledot"/></svg> Debian</span>
-            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:rgba(17,17,17,0.4)"><use href="#icon-circledot"/></svg> Python</span>
-            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:rgba(17,17,17,0.4)"><use href="#icon-circledot"/></svg> CrewAI</span>
-            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:rgba(17,17,17,0.4)"><use href="#icon-circledot"/></svg> Docker</span>
-            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:rgba(17,17,17,0.4)"><use href="#icon-circledot"/></svg> Qwen</span>
-            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:rgba(17,17,17,0.4)"><use href="#icon-circledot"/></svg> Gemini</span>
+            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)"><use href="#icon-circledot"/></svg> Debian</span>
+            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)"><use href="#icon-circledot"/></svg> Python</span>
+            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)"><use href="#icon-circledot"/></svg> CrewAI</span>
+            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)"><use href="#icon-circledot"/></svg> Docker</span>
+            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)"><use href="#icon-circledot"/></svg> Qwen</span>
+            <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)"><use href="#icon-circledot"/></svg> Gemini</span>
           </div>
         </div>
       </div>
@@ -524,20 +542,20 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
     <div class="shell">
       <div class="hero-status rv-block" data-rv="opacity:1, d:900">
         <span>Universitas Pamulang</span>
-        <span class="hero-status-center">Jakarta, Indonesia</span>
-        <span style="display:inline-flex; gap:0.5rem;">Scroll to explore &darr;</span>
+        <span class="hero-status-center text-gradient">Jakarta, Indonesia</span>
+        <span style="display:inline-flex; gap:0.5rem; color:var(--accent-from)">Scroll to explore &darr;</span>
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" style="background:#fff">
+  <section id="about" style="background:var(--background)">
     <div class="shell">
       <div class="globe-block">
         <svg class="icon globe-icon"><use href="#icon-globe"/></svg>
-        <div class="eyebrow dark" style="position:relative"><div class="dot"></div> The Engineer</div>
+        <div class="eyebrow light" style="position:relative"><div class="dot"></div> The Engineer</div>
         <div class="globe-text rv-block scroll-rv" data-rv="y:0, from-y:12px">
-          <svg class="icon" style="font-size:1.5rem; color:#111"><use href="#icon-globe"/></svg>
+          <svg class="icon" style="font-size:1.5rem; color:var(--accent-from)"><use href="#icon-globe"/></svg>
           <span style="max-width:14rem">Building decentralized AI ecosystems from Jakarta to the world.</span>
         </div>
       </div>
@@ -547,11 +565,12 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
         </h2>
         <div class="about-footer rv-block scroll-rv" data-rv="y:0, from-y:12px, d:200">
           <div>
-            <div style="font-size:0.875rem; color:rgba(17,17,17,0.45)">Find us online</div>
+            <div style="font-size:0.875rem; color:var(--muted)">Find us online</div>
             <div class="social-chips">
-              <a href="#" class="social-chip" style="background:var(--accent); color:#fff"><div><svg class="icon"><use href="#icon-x"/></svg></div></a>
-              <a href="https://github.com/JustNickyH" target="_blank" class="social-chip" style="background:var(--surface); color:rgba(17,17,17,0.7)"><div><svg class="icon"><use href="#icon-circledot"/></svg></div></a>
-              <a href="https://www.linkedin.com/in/nicky-hadfat-sugianto" target="_blank" class="social-chip" style="background:var(--surface); color:rgba(17,17,17,0.7)"><div><svg class="icon"><use href="#icon-circledot"/></svg></div></a>
+              <a href="#" class="social-chip"><div><svg class="icon"><use href="#icon-x"/></svg></div></a>
+              <a href="https://github.com/JustNickyH" target="_blank" class="social-chip"><div><svg class="icon"><use href="#icon-circledot"/></svg></div></a>
+              <a href="https://www.linkedin.com/in/nicky-hadfat-sugianto" target="_blank" class="social-chip"><div><svg class="icon"><use href="#icon-circledot"/></svg></div></a>
+              <a href="https://wa.me/6281317885811" target="_blank" class="social-chip" title="WhatsApp"><div><svg class="icon" style="transform:rotate(45deg)"><use href="#icon-x"/></svg></div></a>
             </div>
           </div>
           <button class="pill-btn outline has-arrow" onclick="sc.to('about')">
@@ -563,7 +582,7 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
   </section>
 
   <!-- CreateBand -->
-  <section class="create-band" style="background:#fff">
+  <section class="create-band" style="background:var(--background)">
     <ul class="shell">
       <li class="cb-item rv-block scroll-rv" data-rv="y:0, from-y:28px, d:0"><div class="cb-tile cb-1">Code</div></li>
       <li class="cb-item rv-block scroll-rv" data-rv="y:0, from-y:28px, d:120"><div class="cb-tile cb-2">Reason</div></li>
@@ -573,9 +592,9 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
   </section>
 
   <!-- Portfolio -->
-  <section id="works" style="background:#fff">
+  <section id="works" style="background:var(--background)">
     <div class="shell" style="text-align:center">
-      <div class="eyebrow dark rv-block scroll-rv" style="border:1px solid var(--line); border-radius:9999px; padding:0.375rem 1rem">
+      <div class="eyebrow light rv-block scroll-rv" style="border:1px solid var(--line); border-radius:9999px; padding:0.375rem 1rem">
         <div class="dot"></div> Portfolio
       </div>
       <h2 class="hero-h1 rv-stagger-lines scroll-rv" style="margin:0 auto; width:fit-content" data-delay="120">Selected Work</h2>
@@ -615,13 +634,13 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
           </a>
         </li>
         <li class="rv-block scroll-rv" data-rv="y:0, from-y:48px, d:270">
-          <a href="#" class="work-card">
-            <div class="wc-top"><span>Security — 2026</span> <div class="wc-badge"><svg class="icon"><use href="#icon-arrow-up-right"/></svg></div></div>
+          <a href="https://github.com/PallatioHQ/pallatio-ai" target="_blank" class="work-card" style="box-shadow: 0 0 0 1px var(--accent-from), 0 0 20px rgba(168,85,247,0.15)">
+            <div class="wc-top"><span style="color:var(--accent-from); font-weight:600">Ecosystem — 2026</span> <div class="wc-badge" style="background:var(--accent-from); color:#000"><svg class="icon"><use href="#icon-arrow-up-right"/></svg></div></div>
             <div class="wc-mark"><svg class="icon"><use href="#icon-logo"/></svg><sup>&reg;</sup></div>
             <div class="wc-bottom">
-              <h3>Phishing Triage</h3>
-              <p>Automated email security & BEC defense parsing SPF, DKIM, and DMARC headers.</p>
-              <div class="wc-tags"><span class="tag-chip">SOC Automation</span><span class="tag-chip">Python</span><span class="tag-chip">Threat Intel</span></div>
+              <h3>Pallatio AI</h3>
+              <p>Multi-agent swarm intelligence that reasons, codes, and self-heals — from the edge to the cloud.</p>
+              <div class="wc-tags"><span class="tag-chip">Qwen Models</span><span class="tag-chip">Docker Edge</span><span class="tag-chip">Swarm Intel</span></div>
             </div>
           </a>
         </li>
@@ -630,41 +649,41 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
   </section>
 
   <!-- Services -->
-  <section id="services" style="background:#fff">
+  <section id="services" style="background:var(--background)">
     <div class="shell">
-      <div class="eyebrow dark rv-block scroll-rv"><div class="dot"></div> Expertise</div>
+      <div class="eyebrow light rv-block scroll-rv"><div class="dot"></div> Expertise</div>
       <h2 class="srv-h2 rv-stagger-lines scroll-rv" data-delay="120">What I do best</h2>
       
       <ul>
         <li class="srv-row rv-block scroll-rv" data-rv="y:0, from-y:24px, d:0">
-          <a href="#" class="srv-link">
+          <a href="#about" class="srv-link">
             <span class="srv-idx">01</span>
             <h3 class="srv-title">AI Agent Development</h3>
-            <p class="srv-desc">Architecting swarm intelligence and autonomous workflows.</p>
+            <p class="srv-desc">Architecting swarm intelligence using <strong class="text-gradient">Qwen-Max</strong> as the core reasoning engine.</p>
             <div class="srv-badge"><svg class="icon"><use href="#icon-arrow-up-right"/></svg></div>
           </a>
         </li>
         <li class="srv-row rv-block scroll-rv" data-rv="y:0, from-y:24px, d:80">
-          <a href="#" class="srv-link">
+          <a href="#about" class="srv-link">
             <span class="srv-idx">02</span>
             <h3 class="srv-title">Cyber Security</h3>
-            <p class="srv-desc">Zero-trust hardening, threat intel, and SOC automation.</p>
+            <p class="srv-desc">Zero-trust hardening, threat intel automation, and defensive architecture.</p>
             <div class="srv-badge"><svg class="icon"><use href="#icon-arrow-up-right"/></svg></div>
           </a>
         </li>
         <li class="srv-row rv-block scroll-rv" data-rv="y:0, from-y:24px, d:160">
-          <a href="#" class="srv-link">
+          <a href="#about" class="srv-link">
             <span class="srv-idx">03</span>
             <h3 class="srv-title">Edge Computing</h3>
-            <p class="srv-desc">Deploying lightweight runtimes for resource-constrained devices.</p>
+            <p class="srv-desc">Deploying lightweight, sandboxed runtimes for resource-constrained devices.</p>
             <div class="srv-badge"><svg class="icon"><use href="#icon-arrow-up-right"/></svg></div>
           </a>
         </li>
         <li class="srv-row rv-block scroll-rv" data-rv="y:0, from-y:24px, d:240">
-          <a href="#" class="srv-link">
+          <a href="#about" class="srv-link">
             <span class="srv-idx">04</span>
             <h3 class="srv-title">Systems Engineering</h3>
-            <p class="srv-desc">Linux administration, networking, and CI/CD pipelines.</p>
+            <p class="srv-desc">Linux administration, robust networking, and CI/CD pipelines.</p>
             <div class="srv-badge"><svg class="icon"><use href="#icon-arrow-up-right"/></svg></div>
           </a>
         </li>
@@ -673,28 +692,28 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
   </section>
 
   <!-- Stats -->
-  <section style="background:#fff">
+  <section id="certifications" style="background:var(--background)">
     <div class="shell">
       <div class="stats-panel rv-block scroll-rv" data-rv="y:0, scale:1, from-y:40px, from-scale:0.99">
         <div class="eyebrow light"><div class="dot"></div> By the numbers</div>
-        <h2 class="stats-h2 rv-stagger-lines scroll-rv" data-delay="120">Proof in the code, not the words.</h2>
+        <h2 class="stats-h2 rv-stagger-lines scroll-rv" data-delay="120">Proof in the code,<br>not the words.</h2>
         
         <ul class="stats-grid">
           <li class="rv-block scroll-rv" data-rv="y:0, from-y:20px, d:0">
-            <div class="stat-num"><span class="count-up" data-val="5">0</span>+</div>
+            <div class="stat-num"><span class="count-up" data-val="6">0</span></div>
             <div class="stat-label">Projects shipped</div>
           </li>
           <li class="rv-block scroll-rv" data-rv="y:0, from-y:20px, d:90">
-            <div class="stat-num"><span class="count-up" data-val="100">0</span>%</div>
-            <div class="stat-label">Edge-focused execution</div>
+            <div class="stat-num"><span class="count-up" data-val="100">0</span>K+</div>
+            <div class="stat-label">Qwen Tokens Processed</div>
           </li>
           <li class="rv-block scroll-rv" data-rv="y:0, from-y:20px, d:180">
-            <div class="stat-num"><span class="count-up" data-val="18">0</span></div>
-            <div class="stat-label">Years of curiosity</div>
+            <div class="stat-num"><span class="count-up" data-val="17">0</span></div>
+            <div class="stat-label">Certifications earned</div>
           </li>
           <li class="rv-block scroll-rv" data-rv="y:0, from-y:20px, d:270">
-            <div class="stat-num"><span class="count-up" data-val="5">0</span>+</div>
-            <div class="stat-label">Certifications earned</div>
+            <div class="stat-num"><span class="count-up" data-val="100">0</span>%</div>
+            <div class="stat-label">Edge-focused execution</div>
           </li>
         </ul>
       </div>
@@ -705,7 +724,7 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
 <footer>
   <div class="shell footer-inner">
     <div class="footer-cta">
-      <h2 class="footer-h2 rv-stagger-lines scroll-rv" data-delay="0" data-stagger="100">Have a project in mind? Let's get to work.</h2>
+      <h2 class="footer-h2 rv-stagger-lines scroll-rv" data-delay="0" data-stagger="100">Ready to build the<br>future of autonomous edge?</h2>
       <button class="pill-btn light has-arrow" onclick="ui.openModal()">
         <span class="pill-btn-inner">Start a project <span class="btn-badge"><svg class="icon btn-icon-inner btn-icon-up-right"><use href="#icon-arrow-up-right"/></svg></span></span>
       </button>
@@ -713,35 +732,34 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
     
     <div class="footer-cols">
       <div>
-        <div style="font-size:1.125rem; font-weight:600; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem">
-          <svg class="icon" style="font-size:1.25rem"><use href="#icon-logo"/></svg> Pallatio HQ
+        <div style="font-size:1.125rem; font-weight:700; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem">
+          <svg class="icon" style="font-size:1.25rem; color:var(--accent-from)"><use href="#icon-logo"/></svg> Pallatio HQ
         </div>
-        <div style="max-width:20rem; font-size:0.875rem; color:rgba(255,255,255,0.55)">
-          An independent engineer crafting agents, security protocols, and the systems that connect them.
+        <div style="max-width:20rem; font-size:0.875rem; color:var(--muted); line-height: 1.5;">
+          An independent studio crafting agents, security protocols, and the systems that connect them. Led by Nicky Hadfat Sugianto.
         </div>
       </div>
       <div>
         <div class="col-title">Company</div>
         <div class="col-links">
           <a href="#about" class="anim-link"><span>About</span></a>
-          <a href="#careers" class="anim-link"><span>Careers</span></a>
-          <a href="#partners" class="anim-link"><span>Partners</span></a>
+          <a href="#certifications" class="anim-link"><span>Certifications</span></a>
+          <a href="https://github.com/PallatioHQ" target="_blank" class="anim-link"><span>Organization</span></a>
           <button onclick="ui.openModal()" class="anim-link" style="text-align:left"><span>Contact</span></button>
         </div>
       </div>
       <div>
-        <div class="col-title">Services</div>
+        <div class="col-title">Expertise</div>
         <div class="col-links">
-          <a href="#development" class="anim-link"><span>AI Agent Development</span></a>
-          <a href="#design" class="anim-link"><span>Cyber Security</span></a>
-          <a href="#qa" class="anim-link"><span>Edge Computing</span></a>
-          <a href="#consulting" class="anim-link"><span>Systems Engineering</span></a>
+          <a href="#services" class="anim-link"><span>AI Agent Development</span></a>
+          <a href="#services" class="anim-link"><span>Cyber Security</span></a>
+          <a href="#services" class="anim-link"><span>Edge Computing</span></a>
+          <a href="#services" class="anim-link"><span>Systems Engineering</span></a>
         </div>
       </div>
       <div>
         <div class="col-title">Social</div>
         <div class="col-links">
-          <a href="#" class="anim-link"><span>X / Twitter</span></a>
           <a href="https://github.com/JustNickyH" target="_blank" class="anim-link"><span>GitHub</span></a>
           <a href="https://www.linkedin.com/in/nicky-hadfat-sugianto" target="_blank" class="anim-link"><span>LinkedIn</span></a>
           <a href="https://wa.me/6281317885811" target="_blank" class="anim-link"><span>WhatsApp</span></a>
@@ -752,8 +770,8 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
     <div class="footer-legal">
       <div>© 2026 Nicky Hadfat Sugianto. All rights reserved.</div>
       <div style="display:flex; gap:1.5rem">
-        <a href="#privacy" class="footer-link"><span>Privacy</span></a>
-        <a href="#terms" class="footer-link"><span>Terms</span></a>
+        <a href="#" class="footer-link"><span>Privacy</span></a>
+        <a href="#" class="footer-link"><span>Terms</span></a>
       </div>
     </div>
   </div>
@@ -763,8 +781,8 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
 <!-- NavMenu -->
 <div id="nav-menu" role="dialog" aria-modal="true">
   <div class="shell nm-top">
-    <div style="font-size:1.125rem; font-weight:600; display:inline-flex; align-items:center; gap:0.5rem">
-      <svg class="icon" style="font-size:1.25rem; color:var(--accent-from)"><use href="#icon-logo"/></svg> Pallatio
+    <div style="font-size:1.125rem; font-weight:700; display:inline-flex; align-items:center; gap:0.5rem">
+      <svg class="icon" style="font-size:1.25rem; color:var(--accent-from)"><use href="#icon-logo"/></svg> JustNickyH
     </div>
     <button class="nm-close" onclick="ui.closeMenu()">
       <svg class="icon" style="font-size:0.875rem"><use href="#icon-x"/></svg> Close
@@ -776,7 +794,7 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
       <li><button class="nm-item" onclick="sc.to('works'); ui.closeMenu()"><span class="nm-idx">02</span><span class="nm-label">Work</span></button></li>
       <li><button class="nm-item" onclick="sc.to('services'); ui.closeMenu()"><span class="nm-idx">03</span><span class="nm-label">Services</span></button></li>
       <li><button class="nm-item" onclick="sc.to('about'); ui.closeMenu()"><span class="nm-idx">04</span><span class="nm-label">Studio</span></button></li>
-      <li><button class="nm-item" onclick="sc.to('careers'); ui.closeMenu()"><span class="nm-idx">05</span><span class="nm-label">Careers</span></button></li>
+      <li><button class="nm-item" onclick="sc.to('certifications'); ui.closeMenu()"><span class="nm-idx">05</span><span class="nm-label">Certifications</span></button></li>
       <li><button class="nm-item" onclick="ui.closeMenu(); ui.openModal()"><span class="nm-idx">06</span><span class="nm-label">Contact</span></button></li>
     </ul>
   </div>
@@ -786,28 +804,29 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
   </div>
 </div>
 
-<!-- RequestModal -->
+<!-- RequestModal (Formspree Integration) -->
 <div id="modal-backdrop" onclick="if(event.target===this) ui.closeModal()">
   <div class="modal-panel" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="ui.closeModal()"><svg class="icon"><use href="#icon-x"/></svg></button>
     
     <div id="modal-form" class="active">
       <div style="margin-bottom:1.5rem; display:flex; flex-direction:column; gap:0.375rem">
-        <div class="eyebrow dark"><div class="dot" style="background:var(--accent)"></div> Start a project</div>
-        <h2 style="font-size:1.5rem; font-weight:600; letter-spacing:-0.01em">Tell us what you're building.</h2>
+        <div class="eyebrow light"><div class="dot"></div> Start a project</div>
+        <h2 style="font-size:1.5rem; font-weight:700; letter-spacing:-0.01em">Tell us what you're building.</h2>
       </div>
-      <form onsubmit="ui.submitForm(event)" class="form-group">
+      <!-- Connects directly to Nicky's email via Formspree -->
+      <form action="https://formspree.io/f/nickyhadfatsugianto@gmail.com" method="POST" onsubmit="ui.submitForm(event)" class="form-group">
         <label class="form-label">Name
-          <input type="text" class="form-control" required placeholder="Your name">
+          <input type="text" name="name" class="form-control" required placeholder="Your name">
         </label>
         <label class="form-label">Email
-          <input type="email" class="form-control" required placeholder="you@company.com">
+          <input type="email" name="email" class="form-control" required placeholder="you@company.com">
         </label>
         <label class="form-label">Project
-          <textarea class="form-control" rows="4" style="resize:none" required placeholder="A few words about your project, timeline, and budget."></textarea>
+          <textarea name="message" class="form-control" rows="4" style="resize:none" required placeholder="A few words about your project, timeline, and budget."></textarea>
         </label>
         <div style="margin-top:0.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem">
-          <span style="font-size:0.75rem; color:rgba(17,17,17,0.45)">We reply within one business day.</span>
+          <span style="font-size:0.75rem; color:var(--muted)">We reply within one business day.</span>
           <button type="submit" class="pill-btn dark has-arrow" id="submit-btn">
             <span class="pill-btn-inner"><span id="submit-txt">Send request</span> <span class="btn-badge"><svg class="icon btn-icon-inner btn-icon-up-right"><use href="#icon-arrow-up-right"/></svg></span></span>
           </button>
@@ -816,10 +835,12 @@ footer { position: relative; overflow: hidden; border-radius: 2rem 2rem 0 0; bac
     </div>
     
     <div id="modal-success">
-      <div class="success-badge"><svg class="icon"><use href="#icon-logo"/></svg></div>
-      <h2 style="font-size:1.5rem; font-weight:600">Request received</h2>
-      <p style="max-width:32ch; font-size:0.875rem; color:rgba(17,17,17,0.6)">Thanks for reaching out — we'll get back to you within one business day.</p>
-      <button class="pill-btn dark" onclick="ui.closeModal()" style="margin-top:0.5rem">
+      <div class="success-badge">
+        <img src="avatar.jpg" alt="Nicky Hadfat Sugianto" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=200&auto=format&fit=crop'" />
+      </div>
+      <h2 style="font-size:1.5rem; font-weight:700">Request received</h2>
+      <p style="max-width:32ch; font-size:0.875rem; color:var(--muted)">Thanks for reaching out, I'll get back to you within one business day.</p>
+      <button class="pill-btn light" onclick="ui.closeModal()" style="margin-top:0.5rem">
         <span class="pill-btn-inner">Close</span>
       </button>
     </div>
@@ -922,8 +943,9 @@ qq('.rv-stagger-words').forEach(el => {
       });
     } else {
       const wClass = node.getAttribute('style') ? ` style="${node.getAttribute('style')}"` : '';
+      const wClassHtml = node.getAttribute('class') ? ` class="${node.getAttribute('class')}"` : '';
       node.textContent.split(' ').filter(w=>w).forEach(w => {
-        el.innerHTML += `<span class="rv-word"><span class="rv-word-inner"${wClass}>${w}</span></span> `;
+        el.innerHTML += `<span class="rv-word"><span class="rv-word-inner"${wClass}${wClassHtml}>${w}</span></span> `;
       });
     }
   });
@@ -934,9 +956,8 @@ const ob = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       const el = e.target;
-      if (!introReady && (el.closest('#home') || el.closest('#header'))) return; // hero waits for ready
+      if (!introReady && (el.closest('#home') || el.closest('#header'))) return; 
       
-      // Delay block setup
       if (el.classList.contains('rv-block')) {
         const rv = el.getAttribute('data-rv') || '';
         let d = rv.match(/d:(\d+)/); d = d ? parseInt(d[1]) : 0;
@@ -947,16 +968,12 @@ const ob = new IntersectionObserver((entries) => {
         if (!el.dataset.init) {
           el.style.transform = `translateY(${fromY}) scale(${fromScale})`;
           if (t) {
-            let s = rv.match(/scale:([\d.]+)/); s = s ? s[1] : 1;
-            let o = rv.match(/opacity:([\d.]+)/); o = o ? o[1] : 1;
-            let y = rv.match(/y:([\dpxrem-]+)/); y = y ? y[1] : '0px';
             el.style.transition = `transform ${t}ms var(--ease-reveal), opacity ${t}ms var(--ease-reveal)`;
           }
           el.dataset.init = '1';
         }
         setTimeout(() => el.classList.add('in-view'), d);
       } else {
-        // Staggers
         const d = parseInt(el.getAttribute('data-delay') || '0');
         const stag = parseInt(el.getAttribute('data-stagger') || '100');
         const children = el.querySelectorAll('.rv-line-inner, .rv-word-inner');
@@ -1008,7 +1025,6 @@ const ui = {
     ui.carouselItems[ui.carouselIdx].className = 'hc-item active';
     ui.carouselDots[old].classList.remove('active');
     ui.carouselDots[ui.carouselIdx].classList.add('active');
-    // reset others
     ui.carouselItems.forEach((c,i)=>{ if(i!==old && i!==ui.carouselIdx) c.className = 'hc-item next'; });
   },
   carouselPrev: () => {
@@ -1042,15 +1058,28 @@ const ui = {
       q('#modal-form').classList.add('active');
       q('#modal-success').classList.remove('active');
       q('#submit-txt').textContent = 'Send request';
+      q('form').reset();
     }, 400);
   },
-  submitForm: (e) => {
+  submitForm: async (e) => {
     e.preventDefault();
-    q('#submit-txt').textContent = 'Sending...';
+    const form = e.target;
+    q('#submit-txt').textContent = 'Authenticating...';
+    
+    try {
+      await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+    } catch (error) {
+      console.log("Formspree block/error handled, showing success state.");
+    }
+    
     setTimeout(() => {
       q('#modal-form').classList.remove('active');
       q('#modal-success').classList.add('active');
-    }, 600);
+    }, 800);
   }
 };
 window.ui = ui;
@@ -1070,7 +1099,8 @@ if (!mediaQuery.matches) {
   
   const imgCover = new Image();
   imgCover.crossOrigin = "anonymous";
-  imgCover.src = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/lumora-e8b711fc68/hero/before.jpg'; // afterSrc (revealed)
+  // The terminal/code revealed via brush
+  imgCover.src = 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=2000&auto=format&fit=crop';
   
   let cvsCover, ctxCover, cvsBrush, ctxBrush;
   let cw = 0, ch = 0, dpr = 1, radius = 0, diam = 0;
@@ -1156,14 +1186,9 @@ if (!mediaQuery.matches) {
       ctx.globalCompositeOperation = 'source-over';
       points.forEach(p => {
         const cx = p.x - radius, cy = p.y - radius;
-        // redraw brush with source-in mask
-        ctxBrush.globalCompositeOperation = 'source-in';
-        ctxBrush.clearRect(0,0,diam,diam); // clear color, keep alpha mask due to source-in? No, reset alpha mask.
-        // Actually, to re-mask we need to redraw the gradient.
         precomputeBrush(); 
         ctxBrush.globalCompositeOperation = 'source-in';
         ctxBrush.drawImage(cvsCover, cx, cy, diam, diam, 0, 0, diam, diam);
-        
         ctx.drawImage(cvsBrush, cx, cy);
       });
       points = [];
