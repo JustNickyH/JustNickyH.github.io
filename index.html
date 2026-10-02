@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pallatio HQ — Edge & AI Engineering Studio</title>
+  <meta name="description"
+    content="Nicky Hadfat Sugianto (JustNickyH) is an independent engineer crafting autonomous agents, zero-trust systems, and the infrastructure that connects them." />
+  <meta name="theme-color" content="#070714" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- SVGs -->
+  <svg style="display:none">
+    <symbol id="icon-logo" viewBox="0 0 48 48">
+      <path
+        d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z" />
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+      <path stroke-width="2" d="M5 12h14M13 6l6 6-6 6" class="icon-stroke" />
+    </symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24">
+      <path stroke-width="2" d="M7 17 17 7M8 7h9v9" class="icon-stroke" />
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z" />
+    </symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9.25" stroke-width="1.4" class="icon-stroke" />
+      <path stroke-width="1.4" class="icon-stroke"
+        d="M12 2.75c2.6 2.3 4 5.8 4 9.25s-1.4 6.95-4 9.25c-2.6-2.3-4-5.8-4-9.25s1.4-6.95 4-9.25zM2.75 12h18.5" />
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path stroke-width="2" d="M4 4l16 16M20 4 4 20" class="icon-stroke" />
+    </symbol>
+    <symbol id="icon-circledot" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" stroke-width="1.6" class="icon-stroke" />
+      <circle cx="12" cy="12" r="3.2" />
+    </symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+      <path stroke-width="2" d="M4 6h16M4 12h16M4 18h16" class="icon-stroke" />
+    </symbol>
+  </svg>
+</head>
+
+<body>
+
+  <a href="#main" class="sr-only focus-visible:absolute"
+    style="position:absolute; left:1rem; top:1rem; z-index:60; border-radius:.875rem; background:rgba(15,23,42,0.8); border:1px solid var(--accent); padding:.5rem 1rem; font-size:.875rem; color:#fff;">Skip
+    to content</a>
+
+  <!-- PageLoader -->
+  <div id="loader">
+    <div id="loader-content">
+      <div class="loader-logo">
+        <svg class="icon" style="font-size:1.875rem; color:var(--accent-from);">
+          <use href="#icon-logo" />
+        </svg>
+        Pallatio HQ
+      </div>
+      <p class="loader-tag">Autonomous intelligence, from the edge to the cloud.</p>
+      <div class="loader-progress">
+        <div class="loader-track">
+          <div class="loader-fill" id="l-fill"></div>
+        </div>
+        <div class="loader-labels">
+          <span>Loading Protocol</span>
+          <span class="loader-counter" id="l-count">000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="shell header-inner">
+      <button class="brand-btn" onclick="sc.to('home')">
+        <span><svg class="icon" style="font-size:1.25rem; color:var(--accent);">
+            <use href="#icon-logo" />
+          </svg> JustNickyH</span>
+      </button>
+
+      <nav class="nav-primary">
+        <ul>
+          <li><button onclick="sc.to('home')" aria-current="page"><span>Home</span></button></li>
+          <li><button onclick="sc.to('works')"><span>Work</span></button></li>
+          <li><button onclick="sc.to('services')"><span>Services <span
+                  style="font-size:0.75rem; opacity:0.6">▾</span></span></button></li>
+          <li><button onclick="sc.to('about')"><span>Studio</span></button></li>
+          <li><button onclick="sc.to('certifications')"><span>Certifications</span></button></li>
+          <li><button onclick="ui.openModal()"><span>Contact</span></button></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="clock-chip">
+          <span style="color:var(--subtle)">Local time</span>
+          <span id="c-time" style="min-width:3.5rem; tabular-nums:true; font-weight:600; color:#fff">9:41am</span>
+          <span style="color:rgba(255,255,255,0.2)">•</span>
+          <span id="c-date" style="font-weight:600; color:#fff">12 March, 2026</span>
+        </div>
+        <button class="menu-btn" onclick="ui.openMenu()">
+          <span><svg class="icon" style="font-size:0.875rem;">
+              <use href="#icon-menu" />
+            </svg> <span class="menu-text">Menu</span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="home">
+      <div class="hero-liquid" id="liquid-container">
+        <!-- Deep network abstract background as base -->
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop" alt=""
+          loading="lazy" />
+        <!-- Arch Linux/Code reveal canvas -->
+        <canvas id="liquid-canvas" aria-hidden="true"></canvas>
+      </div>
+      <div class="hero-vignette"></div>
+      <div class="hero-watermark rv-block glitch-text" data-rv="opacity:0.4, y:0, from-y:20px, d:300, t:120">PALLATIO</div>
+
+      <div class="hero-grid shell">
+        <div class="hero-col-left">
+          <div class="eyebrow dark rv-block" data-rv="y:0, from-y:10px, d:200">
+            <div class="dot"></div> AI & Security Engineer
+          </div>
+          <h1 class="hero-h1" id="typing-hero">
+            <span class="text-gradient">Autonomous agents,</span><br>engineered for<br>the edge.
+          </h1>
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              const el = document.getElementById('typing-hero');
+              const text1 = "Autonomous agents,";
+              const text2 = "engineered for";
+              const text3 = "the edge.";
+              el.innerHTML = '<span class="text-gradient"></span><br><span></span><br><span></span><span class="cursor-blink"></span>';
+              const spans = el.querySelectorAll('span:not(.cursor-blink)');
+              
+              let currentSpan = 0;
+              let charIndex = 0;
+              const texts = [text1, text2, text3];
+              
+              function typeWriter() {
+                if (currentSpan < texts.length) {
+                  if (charIndex < texts[currentSpan].length) {
+                    spans[currentSpan].innerHTML += texts[currentSpan].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriter, 50);
+                  } else {
+                    currentSpan++;
+                    charIndex = 0;
+                    setTimeout(typeWriter, 300);
+                  }
+                }
+              }
+              setTimeout(typeWriter, 1000);
+            });
+          </script>
+          <div class="rating-row rv-block" data-rv="y:0, d:650">
+            <span style="color:var(--accent); display:flex;">
+              <svg class="icon">
+                <use href="#icon-star" />
+              </svg><svg class="icon">
+                <use href="#icon-star" />
+              </svg><svg class="icon">
+                <use href="#icon-star" />
+              </svg><svg class="icon">
+                <use href="#icon-star" />
+              </svg><svg class="icon">
+                <use href="#icon-star" />
+              </svg>
+            </span>
+            <span style="font-size:0.875rem; font-weight:500; color:var(--muted)">17 Certifications Earned</span>
+          </div>
+          <div class="hero-cta-row rv-block" data-rv="y:0, d:750">
+            <button class="pill-btn dark has-arrow" onclick="ui.openModal()">
+              <span class="pill-btn-inner">Let's Talk <span class="btn-badge"><svg
+                    class="icon btn-icon-inner btn-icon-up-right">
+                    <use href="#icon-arrow-up-right" />
+                  </svg></span></span>
+            </button>
+            <button class="pill-btn outline" onclick="sc.to('works')">
+              <span class="pill-btn-inner">View Work</span>
+            </button>
+          </div>
+          <!-- Certifications Row -->
+          <div class="hero-certs rv-block" data-rv="y:0, d:850">
+            <span
+              style="font-size:0.75rem; color:var(--subtle); text-transform:uppercase; letter-spacing:0.05em">Certified
+              By:</span>
+            <div class="hero-certs-list">
+              <span>AWS</span><span>IBM</span><span>Cisco Networking Academy</span><span>Dicoding</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-col-right">
+          <div class="hero-card rv-block" data-rv="y:0, scale:1, from-y:16px, from-scale:0.96, d:400, t:200"
+            id="hero-carousel" onclick="ui.carouselNext()">
+            <div class="hero-card-inner">
+              <div class="hc-left">
+                <!-- Avatar Profile here -->
+                <img src="avatar.jpeg" alt="Nicky Hadfat Sugianto"
+                  onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=200&auto=format&fit=crop'" />
+              </div>
+              <div class="hc-right">
+                <div class="hc-content">
+                  <div class="hc-item active" data-idx="0">
+                    <div class="hc-caption">Reasoning Engine</div>
+                    <div class="hc-title">Qwen-Max Ambassador.</div>
+                  </div>
+                  <div class="hc-item next" data-idx="1">
+                    <div class="hc-caption">Zero-Trust OS</div>
+                    <div class="hc-title">Pallatio OS: Debian Edge.</div>
+                  </div>
+                  <div class="hc-item next" data-idx="2">
+                    <div class="hc-caption">Cyber Intelligence</div>
+                    <div class="hc-title">Project AURA: Auto SOC.</div>
+                  </div>
+                </div>
+                <div class="hc-bottom">
+                  <div class="hc-dots">
+                    <div class="hc-dot active"></div>
+                    <div class="hc-dot"></div>
+                    <div class="hc-dot"></div>
+                  </div>
+                  <div class="hc-nav">
+                    <button class="hc-btn" aria-label="Previous slide"
+                      onclick="event.stopPropagation(); ui.carouselPrev()"><svg class="icon"
+                        style="transform:rotate(180deg)">
+                        <use href="#icon-arrow-right" />
+                      </svg></button>
+                    <button class="hc-btn" aria-label="Next slide"
+                      onclick="event.stopPropagation(); ui.carouselNext()"><svg class="icon">
+                        <use href="#icon-arrow-right" />
+                      </svg></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="partners rv-block" data-rv="y:0, from-y:14px, d:550, t:200">
+            <div class="partners-label">Tech Stack & Infrastructure</div>
+            <div class="partners-grid">
+              <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)">
+                  <use href="#icon-circledot" />
+                </svg> Debian</span>
+              <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)">
+                  <use href="#icon-circledot" />
+                </svg> Python</span>
+              <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)">
+                  <use href="#icon-circledot" />
+                </svg> CrewAI</span>
+              <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)">
+                  <use href="#icon-circledot" />
+                </svg> Docker</span>
+              <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)">
+                  <use href="#icon-circledot" />
+                </svg> Qwen</span>
+              <span class="partner-item"><svg class="icon" style="font-size:0.875rem; color:var(--subtle)">
+                  <use href="#icon-circledot" />
+                </svg> Gemini</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell">
+        <div class="hero-status rv-block" data-rv="opacity:1, d:900">
+          <span>Universitas Pamulang</span>
+          <span class="hero-status-center text-gradient">Jakarta, Indonesia</span>
+          <span style="display:inline-flex; gap:0.5rem; color:var(--accent-from)">Scroll to explore &darr;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="background:var(--background)">
+      <div class="shell">
+        <div class="globe-block">
+          <svg class="icon globe-icon">
+            <use href="#icon-globe" />
+          </svg>
+          <div class="eyebrow light" style="position:relative">
+            <div class="dot"></div> The Engineer
+          </div>
+          <div class="globe-text rv-block scroll-rv" data-rv="y:0, from-y:12px">
+            <svg class="icon" style="font-size:1.5rem; color:var(--accent-from)">
+              <use href="#icon-globe" />
+            </svg>
+            <span style="max-width:14rem">Building decentralized AI ecosystems from Jakarta to the world.</span>
+          </div>
+        </div>
+        <div class="about-statement">
+          <h2 class="about-h2 rv-stagger-words scroll-rv" data-stagger="35" data-ease="words">
+            I partner with ambitious teams to ship <span style="color:var(--muted)">autonomous systems, zero-trust
+              architectures, and the infrastructure that holds them together.</span>
+          </h2>
+          <div class="about-footer rv-block scroll-rv" data-rv="y:0, from-y:12px, d:200">
+            <div>
+              <div style="font-size:0.875rem; color:var(--muted)">Find us online</div>
+              <div class="social-chips">
+                <a href="https://x.com/JustNickyH" target="_blank" class="social-chip">
+                  <div><svg class="icon">
+                      <use href="#icon-x" />
+                    </svg></div>
+                </a>
+                <a href="https://github.com/JustNickyH" target="_blank" class="social-chip">
+                  <div><svg class="icon">
+                      <use href="#icon-circledot" />
+                    </svg></div>
+                </a>
+                <a href="https://www.linkedin.com/in/nicky-hadfat-sugianto" target="_blank" class="social-chip">
+                  <div><svg class="icon">
+                      <use href="#icon-circledot" />
+                    </svg></div>
+                </a>
+                <a href="https://wa.me/6281317885811" target="_blank" class="social-chip" title="WhatsApp">
+                  <div><svg class="icon" style="transform:rotate(45deg)">
+                      <use href="#icon-x" />
+                    </svg></div>
+                </a>
+              </div>
+            </div>
+            <button class="pill-btn outline has-arrow" onclick="sc.to('about')">
+              <span class="pill-btn-inner">About Us <span class="btn-badge"><svg
+                    class="icon btn-icon-inner btn-icon-right">
+                    <use href="#icon-arrow-right" />
+                  </svg></span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CreateBand -->
+    <section class="create-band" style="background:var(--background)">
+      <ul class="shell">
+        <li class="cb-item rv-block scroll-rv" data-rv="y:0, from-y:28px, d:0">
+          <div class="cb-tile cb-1">Code</div>
+        </li>
+        <li class="cb-item rv-block scroll-rv" data-rv="y:0, from-y:28px, d:120">
+          <div class="cb-tile cb-2">Reason</div>
+        </li>
+        <li class="cb-item rv-block scroll-rv" data-rv="y:0, from-y:28px, d:240">
+          <div class="cb-tile cb-3"><svg class="icon">
+              <use href="#icon-arrow-right" />
+            </svg></div>
+        </li>
+        <li class="cb-item rv-block scroll-rv" data-rv="y:0, from-y:28px, d:360">
+          <div class="cb-tile cb-4">Secure</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="works" style="background:var(--background)">
+      <div class="shell" style="text-align:center">
+        <div class="eyebrow light rv-block scroll-rv"
+          style="border:1px solid var(--line); border-radius:9999px; padding:0.375rem 1rem">
+          <div class="dot"></div> Portfolio
+        </div>
+        <h2 class="hero-h1 rv-stagger-lines scroll-rv" style="margin:0 auto; width:fit-content" data-delay="120">
+          Selected Work</h2>
+
+        <ul class="works-cards" style="text-align:left">
+          <li class="rv-block scroll-rv" data-rv="y:0, from-y:48px, d:0">
+            <a href="https://github.com/JustNickyH/Pallatio-OS" target="_blank" class="work-card">
+              <div class="wc-top"><span>Edge OS — 2026</span>
+                <div class="wc-badge"><svg class="icon">
+                    <use href="#icon-arrow-up-right" />
+                  </svg></div>
+              </div>
+              <div class="wc-mark"><svg class="icon">
+                  <use href="#icon-logo" />
+                </svg><sup>&reg;</sup></div>
+              <div class="wc-bottom">
+                <h3>Pallatio OS</h3>
+                <p>A Zero-Trust Kiosk OS built on Debian with defense-in-depth architecture.</p>
+                <div class="wc-tags"><span class="tag-chip">OS Hardening</span><span class="tag-chip">Bash</span><span
+                    class="tag-chip">Debian</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="rv-block scroll-rv" data-rv="y:0, from-y:48px, d:90">
+            <a href="https://github.com/JustNickyH/AURA-MultiAgent" target="_blank" class="work-card">
+              <div class="wc-top"><span>Cyber Sec — 2026</span>
+                <div class="wc-badge"><svg class="icon">
+                    <use href="#icon-arrow-up-right" />
+                  </svg></div>
+              </div>
+              <div class="wc-mark"><svg class="icon">
+                  <use href="#icon-logo" />
+                </svg><sup>&reg;</sup></div>
+              <div class="wc-bottom">
+                <h3>Project AURA</h3>
+                <p>Autonomous Multi-Agent Cyber Intelligence powered by CrewAI & Gemini 1.5 Flash.</p>
+                <div class="wc-tags"><span class="tag-chip">Python</span><span class="tag-chip">CrewAI</span><span
+                    class="tag-chip">GenAI</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="rv-block scroll-rv" data-rv="y:0, from-y:48px, d:180">
+            <a href="https://github.com/JustNickyH/HANA-AI" target="_blank" class="work-card">
+              <div class="wc-top"><span>AI Agent — 2026</span>
+                <div class="wc-badge"><svg class="icon">
+                    <use href="#icon-arrow-up-right" />
+                  </svg></div>
+              </div>
+              <div class="wc-mark"><svg class="icon">
+                  <use href="#icon-logo" />
+                </svg><sup>&reg;</sup></div>
+              <div class="wc-bottom">
+                <h3>HANA AI</h3>
+                <p>An emotional-adaptive enterprise agent with vector memory pipeline for long-term retention.</p>
+                <div class="wc-tags"><span class="tag-chip">LLM Prompting</span><span class="tag-chip">Vector
+                    DB</span><span class="tag-chip">Python</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="rv-block scroll-rv" data-rv="y:0, from-y:48px, d:270">
+            <a href="https://github.com/PallatioHQ/pallatio-ai" target="_blank" class="work-card"
+              style="box-shadow: 0 0 0 1px var(--accent-from), 0 0 20px rgba(168,85,247,0.15)">
+              <div class="wc-top"><span style="color:var(--accent-from); font-weight:600">Ecosystem — 2026</span>
+                <div class="wc-badge" style="background:var(--accent-from); color:#000"><svg class="icon">
+                    <use href="#icon-arrow-up-right" />
+                  </svg></div>
+              </div>
+              <div class="wc-mark"><svg class="icon">
+                  <use href="#icon-logo" />
+                </svg><sup>&reg;</sup></div>
+              <div class="wc-bottom">
+                <h3>Pallatio AI</h3>
+                <p>Multi-agent swarm intelligence that reasons, codes, and self-heals — from the edge to the cloud.</p>
+                <div class="wc-tags"><span class="tag-chip">Qwen Models</span><span class="tag-chip">Docker
+                    Edge</span><span class="tag-chip">Swarm Intel</span></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" style="background:var(--background)">
+      <div class="shell">
+        <div class="eyebrow light rv-block scroll-rv">
+          <div class="dot"></div> Expertise
+        </div>
+        <h2 class="srv-h2 rv-stagger-lines scroll-rv" data-delay="120">What I do best</h2>
+
+        <ul>
+          <li class="srv-row rv-block scroll-rv" data-rv="y:0, from-y:24px, d:0">
+            <a href="#" onclick="ui.openModal(); return false;" class="srv-link">
+              <span class="srv-idx">01</span>
+              <h3 class="srv-title">AI Agent Development</h3>
+              <p class="srv-desc">Architecting swarm intelligence using <strong class="text-gradient">Qwen-Max</strong>
+                as the core reasoning engine.</p>
+              <div class="srv-badge"><svg class="icon">
+                  <use href="#icon-arrow-up-right" />
+                </svg></div>
+            </a>
+          </li>
+          <li class="srv-row rv-block scroll-rv" data-rv="y:0, from-y:24px, d:80">
+            <a href="#" onclick="ui.openModal(); return false;" class="srv-link">
+              <span class="srv-idx">02</span>
+              <h3 class="srv-title">Cyber Security</h3>
+              <p class="srv-desc">Zero-trust hardening, threat intel automation, and defensive architecture.</p>
+              <div class="srv-badge"><svg class="icon">
+                  <use href="#icon-arrow-up-right" />
+                </svg></div>
+            </a>
+          </li>
+          <li class="srv-row rv-block scroll-rv" data-rv="y:0, from-y:24px, d:160">
+            <a href="#" onclick="ui.openModal(); return false;" class="srv-link">
+              <span class="srv-idx">03</span>
+              <h3 class="srv-title">Edge Computing</h3>
+              <p class="srv-desc">Deploying lightweight, sandboxed runtimes for resource-constrained devices.</p>
+              <div class="srv-badge"><svg class="icon">
+                  <use href="#icon-arrow-up-right" />
+                </svg></div>
+            </a>
+          </li>
+          <li class="srv-row rv-block scroll-rv" data-rv="y:0, from-y:24px, d:240">
+            <a href="#" onclick="ui.openModal(); return false;" class="srv-link">
+              <span class="srv-idx">04</span>
+              <h3 class="srv-title">Systems Engineering</h3>
+              <p class="srv-desc">Linux administration, robust networking, and CI/CD pipelines.</p>
+              <div class="srv-badge"><svg class="icon">
+                  <use href="#icon-arrow-up-right" />
+                </svg></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section id="certifications" style="background:var(--background)">
+      <div class="shell">
+        <div class="stats-panel rv-block scroll-rv" data-rv="y:0, scale:1, from-y:40px, from-scale:0.99">
+          <div class="eyebrow light">
+            <div class="dot"></div> By the numbers
+          </div>
+          <h2 class="stats-h2 rv-stagger-lines scroll-rv" data-delay="120">Proof in the code,<br>not the words.</h2>
+
+          <ul class="stats-grid">
+            <li class="rv-block scroll-rv" data-rv="y:0, from-y:20px, d:0">
+              <div class="stat-num"><span class="count-up" id="gh-repos" data-val="6">0</span></div>
+              <div class="stat-label">GitHub Repos</div>
+            </li>
+            <li class="rv-block scroll-rv" data-rv="y:0, from-y:20px, d:90">
+              <div class="stat-num"><span class="count-up" id="gh-stars" data-val="120">0</span></div>
+              <div class="stat-label">Total Stars Earned</div>
+            </li>
+            <li class="rv-block scroll-rv" data-rv="y:0, from-y:20px, d:180">
+              <div class="stat-num"><span class="count-up" data-val="17">0</span></div>
+              <div class="stat-label">Certifications earned</div>
+            </li>
+            <li class="rv-block scroll-rv" data-rv="y:0, from-y:20px, d:270">
+              <div class="stat-num"><span class="count-up" data-val="100">0</span>%</div>
+              <div class="stat-label">Edge-focused execution</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div class="footer-cta">
+        <h2 class="footer-h2 rv-stagger-lines scroll-rv" data-delay="0" data-stagger="100">Ready to build the<br>future
+          of autonomous edge?</h2>
+        <button class="pill-btn light has-arrow" onclick="ui.openModal()">
+          <span class="pill-btn-inner">Start a project <span class="btn-badge"><svg
+                class="icon btn-icon-inner btn-icon-up-right">
+                <use href="#icon-arrow-up-right" />
+              </svg></span></span>
+        </button>
+      </div>
+
+      <div class="footer-cols">
+        <div>
+          <div
+            style="font-size:1.125rem; font-weight:700; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem">
+            <svg class="icon" style="font-size:1.25rem; color:var(--accent-from)">
+              <use href="#icon-logo" />
+            </svg> Pallatio HQ
+          </div>
+          <div style="max-width:20rem; font-size:0.875rem; color:var(--muted); line-height: 1.5;">
+            An independent studio crafting agents, security protocols, and the systems that connect them. Led by Nicky
+            Hadfat Sugianto.
+          </div>
+        </div>
+        <div>
+          <div class="col-title">Company</div>
+          <div class="col-links">
+            <a href="#about" class="anim-link"><span>About</span></a>
+            <a href="#certifications" class="anim-link"><span>Certifications</span></a>
+            <a href="https://github.com/PallatioHQ" target="_blank" class="anim-link"><span>Organization</span></a>
+            <button onclick="ui.openModal()" class="anim-link" style="text-align:left"><span>Contact</span></button>
+          </div>
+        </div>
+        <div>
+          <div class="col-title">Expertise</div>
+          <div class="col-links">
+            <a href="#services" class="anim-link"><span>AI Agent Development</span></a>
+            <a href="#services" class="anim-link"><span>Cyber Security</span></a>
+            <a href="#services" class="anim-link"><span>Edge Computing</span></a>
+            <a href="#services" class="anim-link"><span>Systems Engineering</span></a>
+          </div>
+        </div>
+        <div>
+          <div class="col-title">Social</div>
+          <div class="col-links">
+            <a href="https://github.com/JustNickyH" target="_blank" class="anim-link"><span>GitHub</span></a>
+            <a href="https://www.linkedin.com/in/nicky-hadfat-sugianto" target="_blank"
+              class="anim-link"><span>LinkedIn</span></a>
+            <a href="https://wa.me/6281317885811" target="_blank" class="anim-link"><span>WhatsApp</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <div>© 2026 Nicky Hadfat Sugianto. All rights reserved.</div>
+        <div style="display:flex; gap:1.5rem">
+          <a href="#" class="footer-link"><span>Privacy</span></a>
+          <a href="#" class="footer-link"><span>Terms</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-watermark">PALLATIO</div>
+  </footer>
+
+  <!-- NavMenu -->
+  <div id="nav-menu" role="dialog" aria-modal="true">
+    <div class="shell nm-top">
+      <div style="font-size:1.125rem; font-weight:700; display:inline-flex; align-items:center; gap:0.5rem">
+        <svg class="icon" style="font-size:1.25rem; color:var(--accent-from)">
+          <use href="#icon-logo" />
+        </svg> JustNickyH
+      </div>
+      <button class="nm-close" onclick="ui.closeMenu()" aria-label="Close menu">
+        <svg class="icon" style="font-size:0.875rem">
+          <use href="#icon-x" />
+        </svg> Close
+      </button>
+    </div>
+    <div class="shell nm-list">
+      <ul id="nm-list">
+        <li><button class="nm-item" onclick="sc.to('home'); ui.closeMenu()"><span class="nm-idx">01</span><span
+              class="nm-label">Home</span></button></li>
+        <li><button class="nm-item" onclick="sc.to('works'); ui.closeMenu()"><span class="nm-idx">02</span><span
+              class="nm-label">Work</span></button></li>
+        <li><button class="nm-item" onclick="sc.to('services'); ui.closeMenu()"><span class="nm-idx">03</span><span
+              class="nm-label">Services</span></button></li>
+        <li><button class="nm-item" onclick="sc.to('about'); ui.closeMenu()"><span class="nm-idx">04</span><span
+              class="nm-label">Studio</span></button></li>
+        <li><button class="nm-item" onclick="sc.to('certifications'); ui.closeMenu()"><span
+              class="nm-idx">05</span><span class="nm-label">Certifications</span></button></li>
+        <li><button class="nm-item" onclick="ui.closeMenu(); ui.openModal()"><span class="nm-idx">06</span><span
+              class="nm-label">Contact</span></button></li>
+      </ul>
+    </div>
+    <div class="shell nm-bottom">
+      <div>Local time — <span id="m-time">9:41am</span></div>
+      <button class="nm-cta" onclick="ui.closeMenu(); ui.openModal()">Start a project &rarr;</button>
+    </div>
+  </div>
+
+  <!-- RequestModal (Formspree Integration) -->
+  <div id="modal-backdrop" onclick="if(event.target===this) ui.closeModal()">
+    <div class="modal-panel" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="ui.closeModal()" aria-label="Close modal"><svg class="icon">
+          <use href="#icon-x" />
+        </svg></button>
+
+      <div id="modal-form" class="active">
+        <div style="margin-bottom:1.5rem; display:flex; flex-direction:column; gap:0.375rem">
+          <div class="eyebrow light">
+            <div class="dot"></div> Start a project
+          </div>
+          <h2 style="font-size:1.5rem; font-weight:700; letter-spacing:-0.01em">Tell us what you're building.</h2>
+        </div>
+        <!-- Connects directly to Nicky's email via Formspree -->
+        <form action="https://formspree.io/f/myezaqej" method="POST" onsubmit="ui.submitForm(event)" class="form-group">
+          <label class="form-label">Name
+            <input type="text" name="name" class="form-control" required placeholder="Your name">
+          </label>
+          <label class="form-label">Email
+            <input type="email" name="email" class="form-control" required placeholder="you@company.com">
+          </label>
+          <label class="form-label">Project
+            <textarea name="message" class="form-control" rows="4" style="resize:none" required
+              placeholder="A few words about your project, timeline, and budget."></textarea>
+          </label>
+          <div style="margin-top:0.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem">
+            <span style="font-size:0.75rem; color:var(--muted)">We reply within one business day.</span>
+            <button type="submit" class="pill-btn dark has-arrow" id="submit-btn">
+              <span class="pill-btn-inner"><span id="submit-txt">Send request</span> <span class="btn-badge"><svg
+                    class="icon btn-icon-inner btn-icon-up-right">
+                    <use href="#icon-arrow-up-right" />
+                  </svg></span></span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="modal-success">
+        <div class="success-badge">
+          <img src="avatar.jpg" alt="Nicky Hadfat Sugianto" loading="lazy"
+            onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=200&auto=format&fit=crop'" />
+        </div>
+        <h2 style="font-size:1.5rem; font-weight:700">Request received</h2>
+        <p style="max-width:32ch; font-size:0.875rem; color:var(--muted)">Thanks for reaching out, I'll get back to you
+          within one business day.</p>
+        <button class="pill-btn light" onclick="ui.closeModal()" style="margin-top:0.5rem">
+          <span class="pill-btn-inner">Close</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="term-modal" class="term-overlay" onclick="if(event.target===this) ui.closeTerm()">
+    <div class="term-window">
+      <div class="term-header">
+        <span>root@justnickyh:~</span>
+        <button onclick="ui.closeTerm()" aria-label="Close Terminal">&times;</button>
+      </div>
+      <div class="term-body" id="term-body" onclick="document.getElementById('term-input').focus()">
+        <div class="term-line">Welcome to JustNickyH Terminal v1.0.0</div>
+        <div class="term-line">Type 'help' to see available commands.</div>
+        <div class="term-input-line" id="term-input-container">
+          <span class="term-prompt">$ </span>
+          <input type="text" id="term-input" autocomplete="off" spellcheck="false" onkeydown="ui.handleTerm(event)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="importmap">
+{ "imports": { "lenis": "https://unpkg.com/lenis@1.3.23/dist/lenis.mjs" } }
+</script>
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
